@@ -15,9 +15,11 @@ namespace modelling
 
         public SqlCommand baseConnect()
         {
-            SqlConnection c = new SqlConnection();
+           // SqlConnection c = new SqlConnection();
             SqlCommand q = new SqlCommand();
-            c.ConnectionString = @"Data Source=.\SQLEXPRESS;AttachDbFilename=C:\Users\Андрей\Documents\Visual Studio 2010\Projects\modelling\modelling\App_Data\Database1.mdf;Integrated Security=True;User Instance=True";
+            SqlConnection c = new SqlConnection("Server=localhost;" +
+                   "database=DATABASE1.MDF;" +
+                   "Integrated Security=True;"); 
             c.Open();
             q.Connection = c;
             return q;
@@ -30,9 +32,11 @@ namespace modelling
 
         public SqlCommand baseConnect()
         {
-            SqlConnection c = new SqlConnection();
+           // SqlConnection c = new SqlConnection();
             SqlCommand q = new SqlCommand();
-            c.ConnectionString = @"Data Source=.\SQLEXPRESS;AttachDbFilename=C:\Users\Андрей\Documents\Visual Studio 2010\Projects\modelling\modelling\App_Data\Database1.mdf;Integrated Security=True;User Instance=True";
+            SqlConnection c = new SqlConnection("Server=localhost;" +
+                   "database=DATABASE1.MDF;" +
+                   "Integrated Security=True;"); 
             c.Open();
             q.Connection = c;
             return q;
