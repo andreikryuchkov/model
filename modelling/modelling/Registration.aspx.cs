@@ -8,9 +8,10 @@ using System.Data.SqlClient;
 
 namespace modelling
 {
-    public partial class WebForm1 : MyPage
+    public partial class WebForm1 : Page
     {
-       
+        ClassToWorckWhithSQL ctwwSQL = new ClassToWorckWhithSQL();
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -18,12 +19,10 @@ namespace modelling
 
         protected void sendReg_click(object sender, EventArgs e)
         {
-            SqlCommand command = new SqlCommand();
-            command=baseConnect();
             SqlDataReader reader;
-            command.CommandText = "select count(*) from usr where login='" + 
-                ((TextBox)registrationView.FindControl("regLogin")).Text+"';";
-            reader = command.ExecuteReader();
+            ctwwSQL.TextCommand = "select count(*) from usr where login='" +
+                ((TextBox)registrationView.FindControl("regLogin")).Text + "';";
+            reader = ctwwSQL.ExecuteReader;
             reader.Read();
             if ((int)reader.GetValue(0) != 0)
             {
@@ -31,8 +30,8 @@ namespace modelling
                 reader.Close();
                 return;
             }
-            
-            command.CommandText = "insert into usr(login,password,mail,name,family,phone,adress) values('"+
+
+            ctwwSQL.TextCommand = "insert into usr(login,password,mail,name,family,phone,adress) values('" +
                 ((TextBox)registrationView.FindControl("regLogin")).Text+"','"+
                 ((TextBox)registrationView.FindControl("regPassword")).Text + "','"+
                 ((TextBox)registrationView.FindControl("regmail")).Text+"','"+
@@ -41,7 +40,7 @@ namespace modelling
                 ((TextBox)registrationView.FindControl("regPhone")).Text +"','"+
                 ((TextBox)registrationView.FindControl("regAdress")).Text + "');"
                 ;
-            command.ExecuteNonQuery();
+            ctwwSQL.SqlCommand.ExecuteNonQuery();
             registrationView.Visible = false;
             regMessage.Text = "На указанную Вами почту выслано письмо подтверждения регистрации. <a href=default.aspx>Возврат на главную.</a>"; 
             // .Text = "На указанную Вами почту выслано письмо подтверждения регистрации ";

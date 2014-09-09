@@ -10,37 +10,53 @@ using System.Web.UI;
 
 namespace modelling
 {
-    public partial class MyPage : Page
+    public class ClassToWorckWhithSQL 
     {
-
         public SqlCommand baseConnect()
         {
-           // SqlConnection c = new SqlConnection();
             SqlCommand q = new SqlCommand();
             SqlConnection c = new SqlConnection("Server=localhost;" +
                    "database=DATABASE1.MDF;" +
-                   "Integrated Security=True;"); 
+                   "Integrated Security=True;");
             c.Open();
             q.Connection = c;
             return q;
         }
 
-    }
-
-    public partial class MyMasterPage : MasterPage
-    {
-
-        public SqlCommand baseConnect()
+        public SqlCommand SqlCommand 
         {
-           // SqlConnection c = new SqlConnection();
-            SqlCommand q = new SqlCommand();
-            SqlConnection c = new SqlConnection("Server=localhost;" +
-                   "database=DATABASE1.MDF;" +
-                   "Integrated Security=True;"); 
-            c.Open();
-            q.Connection = c;
-            return q;
+            get 
+            {
+                if (TextCommand != null || TextCommand != "")
+                {
+                    SqlCommand q = new SqlCommand();
+                    q = baseConnect();
+                    q.CommandText = TextCommand;
+                    return q;
+                }
+                else 
+                {
+                    return null;
+                }
+            }
         }
 
+        private string textCommand;
+        public string TextCommand 
+        {
+            get { return textCommand; }
+            set 
+            {
+                if (value != textCommand) 
+                {
+                    textCommand = value;
+                }
+            }
+        }
+
+        public SqlDataReader ExecuteReader
+        {
+            get { return SqlCommand.ExecuteReader(); }
+        }
     }
 }
