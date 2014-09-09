@@ -32,13 +32,14 @@ namespace modelling
                 return;
             }
             
-            command.CommandText = "insert into usr(login,password,mail,name,family,phone) values('"+
+            command.CommandText = "insert into usr(login,password,mail,name,family,phone,adress) values('"+
                 ((TextBox)registrationView.FindControl("regLogin")).Text+"','"+
                 ((TextBox)registrationView.FindControl("regPassword")).Text + "','"+
                 ((TextBox)registrationView.FindControl("regmail")).Text+"','"+
                 ((TextBox)registrationView.FindControl("regName")).Text+"','"+
                 ((TextBox)registrationView.FindControl("regfamily")).Text+"','"+
-                ((TextBox)registrationView.FindControl("regphone")).Text + "');"
+                ((TextBox)registrationView.FindControl("regPhone")).Text +"','"+
+                ((TextBox)registrationView.FindControl("regAdress")).Text + "');"
                 ;
             command.ExecuteNonQuery();
             registrationView.Visible = false;

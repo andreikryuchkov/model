@@ -44,14 +44,12 @@
             </div>
         </div>
         <div id="leftMenu">
-            <asp:TreeView ID="Categories"  runat="server" ShowExpandCollapse="False">
-                <Nodes>
-                    <asp:TreeNode text="124">
-                        <asp:TreeNode Text="234">
-                        </asp:TreeNode>
-                    </asp:TreeNode>
-                </Nodes>
-            </asp:TreeView>
+            <asp:Menu runat=server id="Categories" CssClass="categoriesMenu" Orientation=Vertical>
+            <Items>
+            
+            </Items>
+            </asp:Menu>
+
         </div>
         <div class="main">
             <asp:ContentPlaceHolder ID="MainContent" runat="server"/>

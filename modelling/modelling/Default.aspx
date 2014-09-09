@@ -19,11 +19,6 @@
     </div>
 
     <p>
-        <asp:TextBox ID="username" runat="server"></asp:TextBox>
-
-        <asp:TextBox ID="password" runat="server"></asp:TextBox>
-        <asp:Button ID="Button1" runat="server" OnClick="btn1_click" Text="Button" />
-        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
         
     </p>
 </asp:Content>

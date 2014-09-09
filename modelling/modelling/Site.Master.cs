@@ -11,7 +11,7 @@ using System.Security.Cryptography;
 namespace modelling
 {
    
-    public partial class SiteMaster : System.Web.UI.MasterPage 
+    public partial class SiteMaster : MyMasterPage 
     {
         
         protected void EnterTheSystem(object sender, EventArgs e)
@@ -43,22 +43,25 @@ namespace modelling
             }
             ((Label)HeadLoginView.FindControl("authInfo")).ForeColor = System.Drawing.Color.Red;
             ((Label)HeadLoginView.FindControl("authInfo")).Text = "Неверная пара логин/пароль! Повторите ввод.";
-
+            
 
         }
 
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
-           
-            /*qlConnection conn=new SqlConnection();
-            conn.ConnectionString = "Data Source=SQLEXPRESS;AttachDbFilename=Database1.mdf;Integrated Security=True;User Instance=True";
-            conn.Open();
-            SqlCommand con = new SqlCommand();
-            con.Connection = conn;
-            con.CommandText = "insert into usr(login,password,mail,name,family,phone) values('1','2','3','4','5','6');";
-            con.ExecuteNonQuery();*/
+            Categories.Items.Clear();
+            SqlCommand command = baseConnect();
+            command.CommandText = "select * from category where parrentCategory is NULL;";
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                MenuItem newItem = new MenuItem();
+                newItem.Text = (string)reader.GetValue(1);
+                newItem.NavigateUrl="/catalog.aspx?category="+reader.GetValue(0).ToString();
+                Categories.Items.Add(newItem);
+            }
+          
         }
 
        

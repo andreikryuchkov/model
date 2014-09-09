@@ -20,6 +20,7 @@
                     Имя: <br />
                    Фамилия: <br />
                     Контактный телефон: <br />
+                    Адрес: <br />
                 </div>
                 <div>
                 <asp:TextBox CssClass="regTextBox" runat=server MaxLength=20  ID=regLogin  ></asp:TextBox> <br />
@@ -29,6 +30,7 @@
                 <asp:TextBox runat=server CssClass="regTextBox" MaxLength=20  ID=regName  ></asp:TextBox> <br />
                 <asp:TextBox runat=server CssClass="regTextBox" MaxLength=20  ID=regFamily ></asp:TextBox> <br />
                    <asp:TextBox runat=server CssClass="regTextBox"  TextMode=Phone ID=regPhone ></asp:TextBox> <br />
+                    <asp:TextBox runat=server CssClass="regTextBox" ID=regAdress ></asp:TextBox> <br />
                 </div>
 
                 <div style="width:90%;"><asp:Button ID=sendReg OnClick="sendReg_click" runat=server Text="Зарегистрировать!"/> </div>
