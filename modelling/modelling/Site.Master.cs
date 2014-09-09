@@ -16,7 +16,6 @@ namespace modelling
         
         protected void EnterTheSystem(object sender, EventArgs e)
         {
-           
             SqlCommand q = new SqlCommand();
             q = baseConnect();
             TextBox t = ((TextBox)HeadLoginView.FindControl("loginUsrName"));
@@ -33,10 +32,6 @@ namespace modelling
             {
                 FormsAuthentication.SetAuthCookie(((TextBox)HeadLoginView.FindControl("loginUsrName")).Text, false);
                 FormsAuthentication.RedirectFromLoginPage(((TextBox)HeadLoginView.FindControl("loginUsrName")).Text, false);
-              
-                
-                
-                //HeadLoginView.ViewStateMode =
                 return;
             }
             ((Label)HeadLoginView.FindControl("authInfo")).ForeColor = System.Drawing.Color.Red;

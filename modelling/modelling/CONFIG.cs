@@ -7,7 +7,9 @@ namespace modelling
 {
     public class config
     {
-        public string dataBaseConnectionString = @"Data Source=.\SQLEXPRESS;AttachDbFilename=C:\model\modelling\modelling\App_Data\Database1.mdf;Integrated Security=True;User Instance=True";
+        public string dataBaseConnectionString = @"Server=localhost;" +
+                   "database=DATABASE1.MDF;" +
+                   "Integrated Security=True;";
     }
     
 }

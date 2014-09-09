@@ -15,9 +15,8 @@ namespace modelling
 
         public SqlCommand baseConnect()
         {
-            SqlConnection c = new SqlConnection();
             SqlCommand q = new SqlCommand();
-            c.ConnectionString = (new config()).dataBaseConnectionString;
+            SqlConnection c = new SqlConnection((new config()).dataBaseConnectionString);
             c.Open();
             q.Connection = c;
             return q;
@@ -30,9 +29,8 @@ namespace modelling
 
         public SqlCommand baseConnect()
         {
-            SqlConnection c = new SqlConnection();
             SqlCommand q = new SqlCommand();
-            c.ConnectionString = (new config()).dataBaseConnectionString;
+            SqlConnection c = new SqlConnection((new config()).dataBaseConnectionString);
             c.Open();
             q.Connection = c;
             return q;

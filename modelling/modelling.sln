@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "modelling", "modelling\modelling.csproj", "{C80A289F-C611-45A3-BA1E-DADDC28BE81A}"
 EndProject
 Global
