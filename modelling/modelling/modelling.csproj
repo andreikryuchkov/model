@@ -113,6 +113,9 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CONFIG.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="MyPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>

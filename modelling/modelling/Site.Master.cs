@@ -16,11 +16,9 @@ namespace modelling
         
         protected void EnterTheSystem(object sender, EventArgs e)
         {
-            SqlConnection c = new SqlConnection();
+           
             SqlCommand q = new SqlCommand();
-            c.ConnectionString = @"Data Source=.\SQLEXPRESS;AttachDbFilename=C:\Users\Андрей\Documents\Visual Studio 2010\Projects\modelling\modelling\App_Data\Database1.mdf;Integrated Security=True;User Instance=True";
-            c.Open();
-            q.Connection = c;
+            q = baseConnect();
             TextBox t = ((TextBox)HeadLoginView.FindControl("loginUsrName"));
             q.CommandText = "select password from usr where login='" + ((TextBox)HeadLoginView.FindControl("loginUsrName")).Text + "';";
             SqlDataReader r;
@@ -35,7 +33,7 @@ namespace modelling
             {
                 FormsAuthentication.SetAuthCookie(((TextBox)HeadLoginView.FindControl("loginUsrName")).Text, false);
                 FormsAuthentication.RedirectFromLoginPage(((TextBox)HeadLoginView.FindControl("loginUsrName")).Text, false);
-                c.Close();
+              
                 
                 
                 //HeadLoginView.ViewStateMode =
