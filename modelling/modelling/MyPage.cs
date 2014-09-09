@@ -10,9 +10,8 @@ using System.Web.UI;
 
 namespace modelling
 {
-    public partial class MyPage : Page
+    public class ClassToWorckWhithSQL 
     {
-
         public SqlCommand baseConnect()
         {
             SqlCommand q = new SqlCommand();
@@ -22,19 +21,40 @@ namespace modelling
             return q;
         }
 
-    }
-
-    public partial class MyMasterPage : MasterPage
-    {
-
-        public SqlCommand baseConnect()
+        public SqlCommand SqlCommand 
         {
-            SqlCommand q = new SqlCommand();
-            SqlConnection c = new SqlConnection((new config()).dataBaseConnectionString);
-            c.Open();
-            q.Connection = c;
-            return q;
+            get 
+            {
+                if (TextCommand != null || TextCommand != "")
+                {
+                    SqlCommand q = new SqlCommand();
+                    q = baseConnect();
+                    q.CommandText = TextCommand;
+                    return q;
+                }
+                else 
+                {
+                    return null;
+                }
+            }
         }
 
+        private string textCommand;
+        public string TextCommand 
+        {
+            get { return textCommand; }
+            set 
+            {
+                if (value != textCommand) 
+                {
+                    textCommand = value;
+                }
+            }
+        }
+
+        public SqlDataReader ExecuteReader
+        {
+            get { return SqlCommand.ExecuteReader(); }
+        }
     }
 }

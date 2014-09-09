@@ -11,17 +11,16 @@ using System.Security.Cryptography;
 namespace modelling
 {
    
-    public partial class SiteMaster : MyMasterPage 
+    public partial class SiteMaster : MasterPage 
     {
-        
+        ClassToWorckWhithSQL ctwwSQL = new ClassToWorckWhithSQL();
+
         protected void EnterTheSystem(object sender, EventArgs e)
         {
             SqlCommand q = new SqlCommand();
-            q = baseConnect();
-            TextBox t = ((TextBox)HeadLoginView.FindControl("loginUsrName"));
-            q.CommandText = "select password from usr where login='" + ((TextBox)HeadLoginView.FindControl("loginUsrName")).Text + "';";
+            ctwwSQL.TextCommand = "select password from usr where login='" + ((TextBox)HeadLoginView.FindControl("loginUsrName")).Text + "';";
             SqlDataReader r;
-            r = q.ExecuteReader();
+            r = ctwwSQL.ExecuteReader;
             if (!(r.Read()))
             {
                 ((Label)HeadLoginView.FindControl("authInfo")).ForeColor = System.Drawing.Color.Red;
@@ -44,9 +43,8 @@ namespace modelling
         protected void Page_Load(object sender, EventArgs e)
         {
             Categories.Items.Clear();
-            SqlCommand command = baseConnect();
-            command.CommandText = "select * from category where parrentCategory is NULL;";
-            SqlDataReader reader = command.ExecuteReader();
+            ctwwSQL.TextCommand = "select * from category where parrentCategory is NULL;";
+            SqlDataReader reader = ctwwSQL.ExecuteReader;
             while (reader.Read())
             {
                 MenuItem newItem = new MenuItem();

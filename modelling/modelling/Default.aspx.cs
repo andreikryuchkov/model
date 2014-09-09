@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 
 namespace modelling
 {
-    public partial class _Default : MyPage
+    public partial class _Default : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
