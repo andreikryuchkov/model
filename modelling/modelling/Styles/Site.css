@@ -77,6 +77,7 @@ h5, h6 {
     margin: 12px 8px 8px;
     min-height: 420px;
     padding: 0 12px;
+    width: 100%;
 }
 .leftCol {
     margin: 12px 8px 8px;

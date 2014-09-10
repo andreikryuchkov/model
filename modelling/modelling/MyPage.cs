@@ -56,5 +56,10 @@ namespace modelling
         {
             get { return SqlCommand.ExecuteReader(); }
         }
+
+        public bool ExecuteNonQuery
+        {
+            get { SqlCommand.ExecuteNonQuery(); return true; }
+        }
     }
 }
