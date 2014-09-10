@@ -199,5 +199,22 @@ div.accountInfo {
 }
 #leftMenu {
     display: table-cell;
-    width: 10%;
+    width: 80px;
+    vertical-align: top;
 }
+
+.listItem
+{
+    width: 30%;
+    margin:1%;
+    display:block;
+    float:left;
+    
+    }
+    
+.listItemImg
+{
+    width:80%;
+    margin:7%;
+    border-radius:10px;
+    }

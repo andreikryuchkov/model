@@ -10,15 +10,15 @@
 namespace modelling {
     
     
-    public partial class WebForm2 {
+    public partial class Catalog {
         
         /// <summary>
-        /// Panel1 элемент управления.
+        /// categoryView элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel1;
+        protected global::System.Web.UI.WebControls.Label categoryView;
     }
 }
