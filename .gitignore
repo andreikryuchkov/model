@@ -68,6 +68,7 @@ build/
 *.tlb
 *.tli
 *.tlh
+*.ldf
 *.tmp
 *.tmp_proj
 *.log
