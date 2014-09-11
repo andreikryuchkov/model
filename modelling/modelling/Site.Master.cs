@@ -17,7 +17,6 @@ namespace modelling
 
         protected void EnterTheSystem(object sender, EventArgs e)
         {
-            SqlCommand q = new SqlCommand();
             ctwwSQL.TextCommand = "select password from usr where login='" + ((TextBox)HeadLoginView.FindControl("loginUsrName")).Text + "';";
             SqlDataReader r;
             r = ctwwSQL.ExecuteReader;
@@ -44,12 +43,11 @@ namespace modelling
         {
             Categories.Items.Clear();
             ctwwSQL.TextCommand = "select * from category where parrentCategory is NULL;";
-            SqlDataReader reader = ctwwSQL.ExecuteReader;
-            while (reader.Read())
+            while (ctwwSQL.Reader.Read())
             {
                 MenuItem newItem = new MenuItem();
-                newItem.Text = (string)reader.GetValue(1);
-                newItem.NavigateUrl="/catalog.aspx?category="+reader.GetValue(0).ToString();
+                newItem.Text = ctwwSQL.GetStringValueReader(1);
+                newItem.NavigateUrl = "/catalog.aspx?category=" + ctwwSQL.GetStringValueReader(0);
                 Categories.Items.Add(newItem);
             }
           

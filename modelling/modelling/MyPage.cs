@@ -6,24 +6,26 @@ using System.Data.SqlClient;
 using System.Web.Security;
 using System.Web.UI.WebControls;
 using System.Web.UI;
+using System.ComponentModel;
 
 
 namespace modelling
 {
-    public class ClassToWorckWhithSQL 
+    public class ClassToWorckWhithSQL : INotifyPropertyChanged
     {
-        public SqlCommand baseConnect()
+        #region [ Initialise ]
+
+        public ClassToWorckWhithSQL() 
         {
-            SqlCommand q = new SqlCommand();
-            SqlConnection c = new SqlConnection((new config()).dataBaseConnectionString);
-            c.Open();
-            q.Connection = c;
-            return q;
         }
 
-        public SqlCommand SqlCommand 
+        #endregion [ Initialise ]
+
+        #region [ Property ]
+
+        public SqlCommand SqlCommand
         {
-            get 
+            get
             {
                 if (TextCommand != null || TextCommand != "")
                 {
@@ -32,7 +34,7 @@ namespace modelling
                     q.CommandText = TextCommand;
                     return q;
                 }
-                else 
+                else
                 {
                     return null;
                 }
@@ -48,6 +50,20 @@ namespace modelling
                 if (value != textCommand) 
                 {
                     textCommand = value;
+                    OnPropertyChanged("TextCommand");
+                }
+            }
+        }
+
+        private SqlDataReader reader;
+        public SqlDataReader Reader 
+        {
+            get { return reader; }
+            set 
+            {
+                if (value != reader) 
+                {
+                    reader = value;
                 }
             }
         }
@@ -61,5 +77,65 @@ namespace modelling
         {
             get { SqlCommand.ExecuteNonQuery(); return true; }
         }
+
+        #endregion [ Property ]
+
+        #region [ Method ]
+
+        public SqlCommand baseConnect()
+        {
+            SqlCommand q = new SqlCommand();
+            SqlConnection c = new SqlConnection((new config()).dataBaseConnectionString);
+            c.Open();
+            q.Connection = c;
+            return q;
+        }
+
+        public string GetStringValueReader(int num)
+        {
+            return Reader.GetValue(num).ToString();
+        }
+
+        private void makeReader() 
+        {
+            Reader = ExecuteReader;
+        }
+
+        #endregion [ Method ]
+
+        #region [ Обработка событий ]
+
+        #region [ System ]
+
+        protected void OnPropertyChanged(PropertyChangedEventArgs e)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (e.PropertyName == "TextCommand")
+            {
+                OnTextCommandChanged();
+            }
+            if (handler != null)
+                handler(this, e);
+        }
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            OnPropertyChanged(new PropertyChangedEventArgs(propertyName));
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        #endregion [ System ]
+
+        #region [ Свои обработчики ]
+
+        protected void OnTextCommandChanged() 
+        {
+            makeReader();
+        }
+
+        #endregion [ Свои обработчики ]
+
+        #endregion [ Обработка событий ]
     }
 }

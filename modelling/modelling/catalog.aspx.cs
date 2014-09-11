@@ -13,6 +13,7 @@ namespace modelling
     public partial class Catalog : System.Web.UI.Page
     {
         ClassToWorckWhithSQL ctwwSQL = new ClassToWorckWhithSQL();
+
         public string formatOutputCategory(string ImgURL, string Description, string Name,int ID)
         {
             string result = "";
@@ -43,17 +44,17 @@ namespace modelling
             if ((Request.QueryString["category"]) != null)
             {
                 ctwwSQL.TextCommand = "select * from item where categoryID=" + Convert.ToInt32(Request.QueryString["category"]) + ";";
-                SqlDataReader reader = ctwwSQL.ExecuteReader;
-                while (reader.Read())
+                while (ctwwSQL.Reader.Read())
                 {
-                    categoryView.Text += formatOutputItem((string)reader.GetValue(4), (string)reader.GetValue(5), (string)reader.GetValue(1), Convert.ToInt32(reader.GetValue(2)));
+                    categoryView.Text += formatOutputItem(ctwwSQL.GetStringValueReader(4), ctwwSQL.GetStringValueReader(5), ctwwSQL.GetStringValueReader(1), Convert.ToInt32(ctwwSQL.Reader.GetValue(2)));
                 }
-            } else {
+            }
+            else
+            {
                 ctwwSQL.TextCommand = "select * from category;";
-                SqlDataReader reader = ctwwSQL.ExecuteReader;
-                while (reader.Read())
+                while (ctwwSQL.Reader.Read())
                 {
-                    categoryView.Text += formatOutputCategory(Convert.ToString(reader.GetValue(3)), Convert.ToString(reader.GetValue(4)), Convert.ToString(reader.GetValue(1)), Convert.ToInt32(reader.GetValue(0)));
+                    categoryView.Text += formatOutputCategory(ctwwSQL.GetStringValueReader(3), ctwwSQL.GetStringValueReader(4), ctwwSQL.GetStringValueReader(1), Convert.ToInt32(ctwwSQL.Reader.GetValue(0)));
                 }
             }
         }

@@ -19,15 +19,13 @@ namespace modelling
 
         protected void sendReg_click(object sender, EventArgs e)
         {
-            SqlDataReader reader;
             ctwwSQL.TextCommand = "select count(*) from usr where login='" +
                 ((TextBox)registrationView.FindControl("regLogin")).Text + "';";
-            reader = ctwwSQL.ExecuteReader;
-            reader.Read();
-            if ((int)reader.GetValue(0) != 0)
+            ctwwSQL.Reader.Read();
+            if ((int)ctwwSQL.Reader.GetValue(0) != 0)
             {
                 regMessage.Text = "Пользователь с таким логином уже существует!";
-                reader.Close();
+                ctwwSQL.Reader.Close();
                 return;
             }
 
