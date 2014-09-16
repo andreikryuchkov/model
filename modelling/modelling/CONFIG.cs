@@ -7,9 +7,7 @@ namespace modelling
 {
     public class config
     {
-        public string dataBaseConnectionString = @"Server=localhost;" +
-                   "database=DATABASE1.MDF;" +
-                   "Integrated Security=True;";
+        public string dataBaseConnectionString = @"Data Source=SYSHCHIPANOV-H;Initial Catalog=DATABASE1.MDF;User ID=Andrey;Password=andrey";
     }
     
 }
