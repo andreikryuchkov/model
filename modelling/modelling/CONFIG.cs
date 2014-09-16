@@ -7,7 +7,12 @@ namespace modelling
 {
     public class config
     {
-        public string dataBaseConnectionString = @"Data Source=SYSHCHIPANOV-H;Initial Catalog=DATABASE1.MDF;User ID=Andrey;Password=andrey";
+
+       
+        public string dataBaseConnectionString = @"Data Source=SYSHCHIPANOV-H;
+Initial Catalog=DATABASE1.MDF;
+Persist Security Info=True;
+User ID=APMalyshev;Password=111";
     }
     
 }
