@@ -33,7 +33,7 @@ namespace AdminConsol
                 c.Open();
                 q.Connection = c;
                 MessageBox.Show("Succesfully", "Connected", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //q.CommandText
+                
             }
         }
 
