@@ -8,11 +8,8 @@ namespace modelling
     public class config
     {
 
-       
-        public string dataBaseConnectionString = @"Data Source=SYSHCHIPANOV-H;
-Initial Catalog=DATABASE1.MDF;
-Persist Security Info=True;
-User ID=APMalyshev;Password=111";
+
+        public string dataBaseConnectionString = @"Data Source=ACER;Initial Catalog=DATABASE1.MDF;Integrated Security=True";
     }
     
 }

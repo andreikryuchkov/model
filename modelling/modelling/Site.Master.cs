@@ -41,15 +41,15 @@ namespace modelling
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Categories.Items.Clear();
+           /* Categories.Items.Clear();
             ctwwSQL.TextCommand = "select * from category where parrentCategory is NULL;";
-            while (ctwwSQL.Reader.Read())
+            while (ctwwSQL.Reader.Read())                                                            !!!!ЗАПОЛНЕНИЕ МЕНЮ!!!!
             {
                 MenuItem newItem = new MenuItem();
                 newItem.Text = ctwwSQL.GetStringValueReader(1);
                 newItem.NavigateUrl = "/catalog.aspx?category=" + ctwwSQL.GetStringValueReader(0);
                 Categories.Items.Add(newItem);
-            }
+            }*/
           
         }
 

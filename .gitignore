@@ -44,6 +44,7 @@ local.properties
 # Build results
 
 [Dd]ebug/
+App_Data/
 [Rr]elease/
 x64/
 build/

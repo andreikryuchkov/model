@@ -15,16 +15,22 @@
                 <p class="attentionMessage">Вы уже авторизованы на сайте! <br /> Необходимо выйти из системы для регистрации. </p>
             </LoggedInTemplate>
             <AnonymousTemplate>
-                
                   <div>
                   Логин: <br />
+                  <img src="/images/regSeparator.png" class="regSeparator" />
                        Пароль:  <br />
+                       <img src="/images/regSeparator.png" class="regSeparator" />
                    Подтвердите пароль: <br />
+                   <img src="/images/regSeparator.png" class="regSeparator" />
                
                    Электронная почта: <br />
+                   <img src="/images/regSeparator.png" class="regSeparator" />
                     Имя: <br />
+                    <img src="/images/regSeparator.png" class="regSeparator" />
                    Фамилия: <br />
+                   <img src="/images/regSeparator.png" class="regSeparator" />
                     Контактный телефон: <br />
+                    <img src="/images/regSeparator.png" class="regSeparator" />
                     Адрес: <br />
                 </div>
                 <div>
