@@ -20,9 +20,9 @@
                 <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
                     <AnonymousTemplate>
                         <asp:Label runat=server ID="authInfo" ></asp:Label></br>
-                        <asp:TextBox ID="loginUsrName" runat="server"></asp:TextBox> 
+                        <asp:TextBox ID="loginUsrName" CssClass="loginInput" runat="server"></asp:TextBox> 
                         <asp:Button ID="enterTheSystem"   runat="server" OnClick="EnterTheSystem"/>
-                        <asp:TextBox ID="loginPassword" runat="server" TextMode="Password" ViewStateMode="Disabled" >Пароль</asp:TextBox>
+                        <asp:TextBox ID="loginPassword" CssClass="loginInput" runat="server" TextMode="Password" ViewStateMode="Disabled" >Пароль</asp:TextBox>
                         
                     </AnonymousTemplate>
                     <LoggedInTemplate>
@@ -37,8 +37,8 @@
                     <Items>
                         <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Домашняя"/>
                         <asp:MenuItem NavigateUrl="~/Registration.aspx" Text="Регистрация"/>
-                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="О программе"/>
-                        <asp:MenuItem NavigateUrl="~/catalog.aspx" Text="Каталог"/>
+                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="Корзина"/>
+                        <asp:MenuItem NavigateUrl="~/catalog.aspx" Text="Меню"/>
                     </Items>
                 </asp:Menu>
                 

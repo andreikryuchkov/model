@@ -18,10 +18,9 @@ namespace modelling
         public string formatOutputCategory(string ImgURL, string Description, string Name,int ID)
         {
             string result = "";
-            result += "<a href=\"?category="+ID+"\"><div class=\"listItem\">" +
+            result += "<a href=\"?category=" + ID + "\"><div class=\"listItemMenu\">" +
                 "<h3>" + Name + "</h3>" +
-              "<img class=\"listItemImg\" description=\"" + Description + "\" src=\"" + ImgURL + "\"/>" +
-              "<p>" + Description + "</p>";
+              "<img class=\"listItemImg\" description=\"" + Description + "\" src=\"" + ImgURL + "\"/>";
              result += "</div>";
             return result;
         }

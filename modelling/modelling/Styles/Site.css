@@ -77,7 +77,7 @@ h5, h6 {
     display: inline-block;
     margin: 0;
     min-height: 420px;
-    width: 100%;
+    width: 880px;
     padding: 10px 40px;
 }
 .leftCol {
@@ -96,6 +96,7 @@ h5, h6 {
 div.hideSkiplink {
    background: url(/images/menu.png) no-repeat scroll 0 0 rgba(0, 0, 0, 0);
     width: 100%;
+    margin: -1px 0 0;
 }
 div.menu {
     padding: 4px 0 4px 8px;
@@ -217,12 +218,17 @@ div.accountInfo {
 }
 .regTextBox 
 {
-    margin: 16px 0;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: medium none;
+    margin: 17px 0;
+    width: 350px;
+    color: #dde4ec;
 }
 #newUserRegistrationContainer div {
     float: left;
     line-height: 3.3em;
-    width:49%;
+    margin: 0 0 0 115px;
+    width: 15%;
 }
 #leftMenu {
     display: table-cell;
@@ -230,14 +236,28 @@ div.accountInfo {
     vertical-align: top;
 }
 
+.listItemMenu
+{
+    display: block;
+    float: left;
+    margin: 1%;
+    width: 17%;
+    }
 .listItem
 {
-    width: 30%;
-    margin:1%;
-    display:block;
-    float:left;
+    display: block;
+    float: left;
+    margin: 1%;
+    width: 20%;
     
     }
+    
+    #MainContent_categoryView
+    {
+       display: block;
+    padding: 40px 0 0 109px;
+    text-align: center;
+        }
     
 .listItemImg
 {
@@ -250,5 +270,31 @@ div.accountInfo {
 .regSeparator
 {
     display: flex;
-    margin: 0 53px;
+    margin: 0 2px;
     }
+    
+    #textBoxes
+    {
+        margin:0 0 0 0 !important;
+        }
+        
+    #MainContent_registrationView_sendReg
+    {
+       background: url("/images/sendRegButton.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: medium none;
+    height: 72px;
+    width: 210px;
+    color: #dde4ec;
+        }
+        
+   .loginInput
+   {
+      background: url("/images/loginInput.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: medium none;
+    height: 40px;
+    padding: 0 20px;
+    width: 132px;
+    color:#dde4ec;
+       }
+       
+       

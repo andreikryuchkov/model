@@ -33,7 +33,7 @@
                     <img src="/images/regSeparator.png" class="regSeparator" />
                     Адрес: <br />
                 </div>
-                <div>
+                <div id="textBoxes">
                 <asp:TextBox CssClass="regTextBox" runat=server MaxLength=20  ID=regLogin  ></asp:TextBox> <br />
                 <asp:TextBox runat=server CssClass="regTextBox" MaxLength=20 TextMode=Password ID=regPassword onfocus="passwordChanged()" ></asp:TextBox> <br />
                 <asp:TextBox runat=server CssClass="regTextBox" TextMode=Password MaxLength=20  ID=PasswordConfirm onfocus="passwordChanged()"  ></asp:TextBox> <br />
