@@ -21,7 +21,7 @@ namespace modelling
             result += "<a href=\"?category=" + ID + "\"><div class=\"listItemMenu\">" +
                 "<h3>" + Name + "</h3>" +
               "<img class=\"listItemImg\" description=\"" + Description + "\" src=\"" + ImgURL + "\"/>";
-             result += "</div>";
+             result += "</div></a>";
             return result;
         }
 

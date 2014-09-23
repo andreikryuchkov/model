@@ -71,6 +71,7 @@
     <Content Include="App_Data\Database1_log.ldf">
       <DependentUpon>Database1.mdf</DependentUpon>
     </Content>
+    <Content Include="bag.aspx" />
     <Content Include="Scripts\scripts.js" />
     <Content Include="Scripts\validate.js" />
     <Content Include="Styles\Site.css" />
@@ -124,6 +125,13 @@
     </Compile>
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="bag.aspx.cs">
+      <DependentUpon>bag.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="bag.aspx.designer.cs">
+      <DependentUpon>bag.aspx</DependentUpon>
     </Compile>
     <Compile Include="CONFIG.cs" />
     <Compile Include="Default.aspx.cs">
