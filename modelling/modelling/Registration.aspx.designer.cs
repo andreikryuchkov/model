@@ -13,13 +13,22 @@ namespace modelling {
     public partial class WebForm1 {
         
         /// <summary>
-        /// regMessage элемент управления.
+        /// regMessageLog элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label regMessage;
+        protected global::System.Web.UI.WebControls.Label regMessageLog;
+        
+        /// <summary>
+        /// regMessagePass элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label regMessagePass;
         
         /// <summary>
         /// registrationView элемент управления.

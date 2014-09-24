@@ -9,7 +9,8 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <p>Регистрация нового пользователя</p>
     <div id="newUserRegistrationContainer"> 
-    <div style="width:90%;"><asp:Label ID="regMessage" Text="" runat=server></asp:Label></div>
+    <div style="width:90%;"><asp:Label ID="regMessageLog" Text="" runat=server></asp:Label></div>
+    <div style="width:90%;"><asp:Label ID="regMessagePass" Text="" runat=server></asp:Label></div>
         <asp:LoginView ID="registrationView" runat=server>
             <LoggedInTemplate>
                 <p class="attentionMessage">Вы уже авторизованы на сайте! <br /> Необходимо выйти из системы для регистрации. </p>
