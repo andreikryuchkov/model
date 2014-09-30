@@ -28,7 +28,7 @@ namespace modelling
         public string formatOutputItem(string ImgURL, string Description, string Name, int Price, int ID)
         {
             string result = "";
-            result += "<a href=\"bag.aspx?addItem=" + ID + "\">" + "<div class=\"listItem\">" +
+            result += "<a href=\"bag.aspx?deleteItem=" + ID + "\">" + "<div class=\"listItem\">" +
                 "<h3>" + Name + "</h3>" +
               "<img class=\"listItemImg\" description=\"" + Description + "\" src=\"" + ImgURL + "\"/>" +
               "<p>" + Description + "</p>";
