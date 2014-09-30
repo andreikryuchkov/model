@@ -8,6 +8,23 @@ using System.Data.SqlClient;
 
 namespace modelling
 {
+    public class Item
+    {
+        ClassToWorckWhithSQL ctwwSQL = new ClassToWorckWhithSQL();
+        public int id;
+        public string photo;
+        public double price;
+        public string name;
+        public Item(int productID)
+        {
+            id = productID;
+            ctwwSQL.TextCommand = "SELECT name, price, photo FROM Item WHERE id=" + id.ToString() + ";";
+            ctwwSQL.Reader.Read();
+            name = ctwwSQL.GetStringValueReader(0);
+            price = Convert.ToDouble(ctwwSQL.GetStringValueReader(1));
+            photo = ctwwSQL.GetStringValueReader(2);
+        }
+    }
 
     public class Global : System.Web.HttpApplication
     {
@@ -32,6 +49,8 @@ namespace modelling
         void Session_Start(object sender, EventArgs e)
         {
             // Код, выполняемый при запуске нового сеанса
+            List<Item> itemsInBag = new List<Item>();
+            Session["itemsInBag"] = itemsInBag;
 
         }
 

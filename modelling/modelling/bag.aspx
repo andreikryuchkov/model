@@ -2,6 +2,6 @@
 <asp:Content ID="HeaderContent" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-
+ <asp:Label ID='bagView' runat=server Text=""></asp:Label>
 
 </asp:Content>
