@@ -296,5 +296,7 @@ div.accountInfo {
     width: 132px;
     color:#dde4ec;
        }
-       
-       
+
+.contactFace {
+visibility:hidden;
+}

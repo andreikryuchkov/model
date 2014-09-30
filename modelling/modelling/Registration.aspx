@@ -2,7 +2,8 @@
 <asp:Content ID="HeaderContent" ContentPlaceHolderID="HeadContent" runat="server">
 
 <script type="text/javascript" src="scripts/validate.js" language=javascript>
-    
+</script>
+<script type="text/javascript" src="scripts/scripts.js" language=javascript>
 </script>
 </asp:Content>
 
@@ -33,6 +34,7 @@
                     Контактный телефон: <br />
                     <img src="/images/regSeparator.png" class="regSeparator" />
                     Адрес: <br />
+                    Для юр. лиц: <br />
                 </div>
                 <div id="textBoxes">
                 <asp:TextBox CssClass="regTextBox" runat=server MaxLength=20  ID=regLogin onkeyup="validateForLogin()" ></asp:TextBox> <br />
@@ -41,8 +43,12 @@
                 <asp:TextBox runat=server CssClass="regTextBox" TextMode=Email MaxLength=20 ID=regMail  ></asp:TextBox><br />
                 <asp:TextBox runat=server CssClass="regTextBox" MaxLength=20  ID=regName  ></asp:TextBox> <br />
                 <asp:TextBox runat=server CssClass="regTextBox" MaxLength=20  ID=regFamily ></asp:TextBox> <br />
-                   <asp:TextBox runat=server CssClass="regTextBox"  TextMode=Phone ID=regPhone ></asp:TextBox> <br />
-                    <asp:TextBox runat=server CssClass="regTextBox" ID=regAdress ></asp:TextBox> <br />                </div>
+                <asp:TextBox runat=server CssClass="regTextBox"  TextMode=Phone ID=regPhone ></asp:TextBox> <br />
+                <asp:TextBox runat=server CssClass="regTextBox" ID=regAdress ></asp:TextBox> <br />
+                <asp:CheckBox runat=server CssClass="regTextBox" ID=regForGurFace OnClick="regGurFace()" ></asp:CheckBox> <br /> 
+                    <asp:TextBox runat=server CssClass="regTextBox contactFace" ID=contactFace  >
+                    </asp:TextBox> <br />        
+                </div>
 
                 <div style="width:90%;">
                     <asp:Button ID=sendReg OnClick="sendReg_click" runat=server Text="Зарегистрировать!"/> 
