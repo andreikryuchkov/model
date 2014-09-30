@@ -139,9 +139,9 @@ namespace modelling
                     ((TextBox)registrationView.FindControl("regName")).Text + "','" +
                     ((TextBox)registrationView.FindControl("regfamily")).Text + "','" +
                     ((TextBox)registrationView.FindControl("regPhone")).Text + "','" +
-                    ((TextBox)registrationView.FindControl("regAdress")).Text +
+                    ((TextBox)registrationView.FindControl("regAdress")).Text + "','" +
                     ((TextBox)registrationView.FindControl("contactFace")).Text + "');"
-                    ;
+                ;
             }
             else
             {
