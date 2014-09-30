@@ -15,6 +15,19 @@ namespace modelling
         public string photo;
         public double price;
         public string name;
+        public static bool operator ==(Item first,Item second)
+        {
+            if (first.id==second.id)
+                return true;
+            return false;
+        }
+        public static bool operator !=(Item first, Item second)
+        {
+            if (first.id == second.id)
+                return false;
+            return true;
+        }
+        public Item() { ;}
         public Item(int productID)
         {
             id = productID;

@@ -17,36 +17,65 @@ namespace modelling
             result += "<div id=\"bagList\">";
             foreach (var item in input)
             {
-                
-                result += "<a href=\"bag.aspx?addItem=" + ID + "\">" + "<div class=\"listItem\">" +
+                result += "<div class=\"listItem\">" + "<a href=\"bag.aspx?deleteItem=" + item.id + "\"><img class=\"DeleteItemIcon\" src=\"images/bagDelete.png\"/></a>" +
                     "<h3>" + item.name + "</h3>" +
                   "<img class=\"listItemImg\" description=\"" + item.id + "\" src=\"" + item.photo + "\"/>";
                 result += "<p style=\"Text-decoration:underline;\" >";
                 result += item.price + " Руб.</p>";
-                result += "</div></a>";
+                result += "</div>";
             }
             result += "</div>";
             return result;
         }
 
+        protected void newOrder_onclick(object sender, EventArgs e)
+        {
+            var s = Session["itemsInBag"];
+            List<Item> items = (List<Item>)s;
+            //ctwwSQL.TextCommand = "insert into order() values ";
+            items.Clear();
+            Session["itemsInBag"] = items;
+            bagView.Text = "";
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            var s = Session["itemsInBag"];
+            List<Item> items = (List<Item>)s;
             if ((Request.QueryString["addItem"]) != null)
             {
                 Item newItem=new Item(Convert.ToInt32(Request.QueryString["addItem"]));
-                var s=Session["itemsInBag"];
-                List<Item> items = (List<Item>)s;
                 items.Add(newItem);
                 Session["itemsInBag"] = items;
-                
+                Response.Redirect("/catalog.aspx");
+                return;
+            }
+            if ((Request.QueryString["deleteItem"]) != null) 
+            {
+                Item finded = new Item();
+                foreach (var it in items)
+                {
+                    if (it.id == Convert.ToInt32(Request.QueryString["deleteItem"]))
+                    {
+                        finded = it;
+                        break;
+                    }
+                }
+                items.Remove(finded);
+                Session["itemsInBag"] = items;
+                //return;
+            }
+            string text = formatOutput(items);
+            bagView.Text = text;
+            if (items.Count == 0)
+            {
+                newOrder.Enabled = false;
             }
             else
-            { 
-                var s=Session["itemsInBag"];
-                List<Item> items = (List<Item>)s;
-                string text = formatOutput(items);
-                bagView.Text = text;
+            {
+                newOrder.Enabled = true;
             }
+            
         }
     }
 }
