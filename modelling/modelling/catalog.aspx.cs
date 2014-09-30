@@ -54,6 +54,7 @@ namespace modelling
                 ctwwSQL.TextCommand = "select * from category;";
                 while (ctwwSQL.Reader.Read())
                 {
+                   // Session("1321")
                     categoryView.Text += formatOutputCategory(ctwwSQL.GetStringValueReader(3), ctwwSQL.GetStringValueReader(4), ctwwSQL.GetStringValueReader(1), Convert.ToInt32(ctwwSQL.Reader.GetValue(0)));
                 }
             }
