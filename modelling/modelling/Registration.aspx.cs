@@ -82,7 +82,7 @@ namespace modelling
                 if (PasswordTextBox.Text != PasswordRepeatTextBox.Text)
                 {
                     //regMessage.Text = "Пароли не совпадают!";
-                    regMessage.ForeColor = Color.Red;
+                    //regMessage.ForeColor = Color.Red;
                     return false;
                 }
                 return true;
@@ -90,7 +90,7 @@ namespace modelling
             else
             {
                 //regMessage.Text = "Поля с паролем должны быть заполнены!";
-                regMessage.ForeColor = Color.Red;
+                //regMessage.ForeColor = Color.Red;
                 return false;
             }
         }
@@ -99,14 +99,14 @@ namespace modelling
         {
             if (LoginTextBox.Text == "") 
             {
-                regMessage.ForeColor = Color.Red;
-                regMessage.Text = "Поле Логин не может быть пустым!";
+                //regMessage.ForeColor = Color.Red;
+                //regMessage.Text = "Поле Логин не может быть пустым!";
                 return false;
             }
             if ((int)ctwwSQL.Reader.GetValue(0) != 0)
             {
-                regMessage.ForeColor = Color.Red;
-                regMessage.Text = "Пользователь с таким логином уже существует!";
+                //regMessage.ForeColor = Color.Red;
+                regMessageLog.Text = "Пользователь с таким логином уже существует!";
                 return false;
             }
             return true;
@@ -141,7 +141,7 @@ namespace modelling
                 ;
             ctwwSQL.SqlCommand.ExecuteNonQuery();
             registrationView.Visible = false;
-            regMessage.Text = "На указанную Вами почту выслано письмо подтверждения регистрации. <a href=default.aspx>Возврат на главную.</a>"; 
+            regMessageLog.Text = "На указанную Вами почту выслано письмо подтверждения регистрации. <a href=default.aspx>Возврат на главную.</a>"; 
             // .Text = "На указанную Вами почту выслано письмо подтверждения регистрации ";
             return;
         }
