@@ -130,15 +130,31 @@ namespace modelling
                 return;
             }
 
-            ctwwSQL.TextCommand = "insert into usr(login,password,mail,name,family,phone,adress) values('" +
-                ((TextBox)registrationView.FindControl("regLogin")).Text+"','"+
-                ((TextBox)registrationView.FindControl("regPassword")).Text + "','"+
-                ((TextBox)registrationView.FindControl("regmail")).Text+"','"+
-                ((TextBox)registrationView.FindControl("regName")).Text+"','"+
-                ((TextBox)registrationView.FindControl("regfamily")).Text+"','"+
-                ((TextBox)registrationView.FindControl("regPhone")).Text +"','"+
-                ((TextBox)registrationView.FindControl("regAdress")).Text + "');"
-                ;
+            if (((CheckBox)registrationView.FindControl("regForGurFace")).Checked) 
+            {
+                ctwwSQL.TextCommand = "insert into companyFace(login,password,mail,name,family,phone,adress,contactFace) values('" +
+                    ((TextBox)registrationView.FindControl("regLogin")).Text + "','" +
+                    ((TextBox)registrationView.FindControl("regPassword")).Text + "','" +
+                    ((TextBox)registrationView.FindControl("regmail")).Text + "','" +
+                    ((TextBox)registrationView.FindControl("regName")).Text + "','" +
+                    ((TextBox)registrationView.FindControl("regfamily")).Text + "','" +
+                    ((TextBox)registrationView.FindControl("regPhone")).Text + "','" +
+                    ((TextBox)registrationView.FindControl("regAdress")).Text +
+                    ((TextBox)registrationView.FindControl("contactFace")).Text + "');"
+                    ;
+            }
+            else
+            {
+                ctwwSQL.TextCommand = "insert into usr(login,password,mail,name,family,phone,adress) values('" +
+                    ((TextBox)registrationView.FindControl("regLogin")).Text + "','" +
+                    ((TextBox)registrationView.FindControl("regPassword")).Text + "','" +
+                    ((TextBox)registrationView.FindControl("regmail")).Text + "','" +
+                    ((TextBox)registrationView.FindControl("regName")).Text + "','" +
+                    ((TextBox)registrationView.FindControl("regfamily")).Text + "','" +
+                    ((TextBox)registrationView.FindControl("regPhone")).Text + "','" +
+                    ((TextBox)registrationView.FindControl("regAdress")).Text + "');"
+                    ;
+            }
             ctwwSQL.SqlCommand.ExecuteNonQuery();
             registrationView.Visible = false;
             regMessageLog.Text = "На указанную Вами почту выслано письмо подтверждения регистрации. <a href=default.aspx>Возврат на главную.</a>"; 

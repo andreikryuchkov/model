@@ -91,6 +91,7 @@ namespace modelling
             return q;
         }
 
+        
         public string GetStringValueReader(int num)
         {
             return Reader.GetValue(num).ToString();
