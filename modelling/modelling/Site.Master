@@ -37,7 +37,7 @@
                     <Items>
                         <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Домашняя"/>
                         <asp:MenuItem NavigateUrl="~/Registration.aspx" Text="Регистрация"/>
-                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="Корзина"/>
+                        <asp:MenuItem NavigateUrl="~/bag.aspx" Text="Корзина"/>
                         <asp:MenuItem NavigateUrl="~/catalog.aspx" Text="Меню"/>
                     </Items>
                 </asp:Menu>

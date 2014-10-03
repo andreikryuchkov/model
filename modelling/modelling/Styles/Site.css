@@ -300,3 +300,34 @@ div.accountInfo {
 .contactFace {
 visibility:hidden;
 }
+
+.DeleteItemIcon
+{
+   display: block;
+    margin: 55px 0 0 22px;
+    position: absolute;
+    width: 20px;
+    }
+.listItem 
+{
+   text-align:center;
+    }
+    
+    
+#MainContent_newOrder
+{
+    background: url("/images/sendRegButton.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: medium none;
+    color: #dde4ec;
+    height: 72px;
+    width: 210px;
+    cursor: pointer;
+    }
+    
+.buttonContainer
+{
+    width:100%;
+    text-align:center;
+     display: inline-block;
+    }
+    
