@@ -30,12 +30,13 @@ namespace modelling
 
         protected void newOrder_onclick(object sender, EventArgs e)
         {
-            var s = Session["itemsInBag"];
+            /*var s = Session["itemsInBag"];
             List<Item> items = (List<Item>)s;
             //ctwwSQL.TextCommand = "insert into order() values ";
             items.Clear();
             Session["itemsInBag"] = items;
-            bagView.Text = "";
+            bagView.Text = "";*/
+            Response.Redirect("/order.aspx");
         }
 
         protected void Page_Load(object sender, EventArgs e)

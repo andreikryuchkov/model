@@ -17,7 +17,7 @@ namespace modelling
 
         protected void EnterTheSystem(object sender, EventArgs e)
         {
-            ctwwSQL.TextCommand = "select password from usr where login='" + ((TextBox)HeadLoginView.FindControl("loginUsrName")).Text + "';";
+            ctwwSQL.TextCommand = "select password,ID from usr where login='" + ((TextBox)HeadLoginView.FindControl("loginUsrName")).Text + "';";
             SqlDataReader r;
             r = ctwwSQL.ExecuteReader;
             if (!(r.Read()))
@@ -28,6 +28,8 @@ namespace modelling
             }
             if (((string)r.GetValue(0)) ==  ((TextBox)HeadLoginView.FindControl("loginPassword")).Text)
             {
+                Session.Add("userID", r.GetValue(1));
+                int a = Convert.ToInt32( Session["userID"]);
                 FormsAuthentication.SetAuthCookie(((TextBox)HeadLoginView.FindControl("loginUsrName")).Text, false);
                 FormsAuthentication.RedirectFromLoginPage(((TextBox)HeadLoginView.FindControl("loginUsrName")).Text, false);
                 return;

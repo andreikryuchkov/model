@@ -69,15 +69,12 @@ build/
 *.tlb
 *.tli
 *.tlh
-*.ldf
 *.tmp
 *.tmp_proj
-*.log
 *.vspscc
 *.vssscc
 .builds
 *.pidb
-*.log
 *.scc
 
 # Visual C++ cache files
@@ -164,8 +161,6 @@ UpgradeLog*.XML
 UpgradeLog*.htm
 
 # SQL Server files
-App_Data/*.mdf
-App_Data/*.ldf
 
 #############
 ## Windows detritus
