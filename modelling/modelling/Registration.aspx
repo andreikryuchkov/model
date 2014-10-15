@@ -27,9 +27,9 @@
                
                    Электронная почта: <br />
                    <img src="/images/regSeparator.png" class="regSeparator" />
-                    Имя: <br />
+                    <asp:Label ID="name" Text="Имя:" runat=server></asp:Label> <br />
                     <img src="/images/regSeparator.png" class="regSeparator" />
-                   Фамилия: <br />
+                   <asp:Label ID="familyName" Text="Фамилия:" runat=server></asp:Label><br />
                    <img src="/images/regSeparator.png" class="regSeparator" />
                     Контактный телефон: <br />
                     <img src="/images/regSeparator.png" class="regSeparator" />
@@ -40,10 +40,10 @@
                 <asp:TextBox CssClass="regTextBox" runat=server MaxLength=20  ID=regLogin onkeyup="validateForLogin()" ></asp:TextBox> <br />
                 <asp:TextBox runat=server CssClass="regTextBox" MaxLength=20 TextMode=Password ID=regPassword onkeyup   ="passwordChanged()" ></asp:TextBox> <br />
                 <asp:TextBox runat=server CssClass="regTextBox" TextMode=Password MaxLength=20  ID=PasswordConfirm onkeyup   ="confirmPasswordChanged()"  ></asp:TextBox> <br />
-                <asp:TextBox runat=server CssClass="regTextBox" TextMode=Email MaxLength=20 ID=regMail  ></asp:TextBox><br />
+                <asp:TextBox runat=server CssClass="regTextBox" TextMode=Email MaxLength=40 ID=regMail  ></asp:TextBox><br />
                 <asp:TextBox runat=server CssClass="regTextBox" MaxLength=20  ID=regName  ></asp:TextBox> <br />
                 <asp:TextBox runat=server CssClass="regTextBox" MaxLength=20  ID=regFamily ></asp:TextBox> <br />
-                <asp:TextBox runat=server CssClass="regTextBox"  TextMode=Phone ID=regPhone ></asp:TextBox> <br />
+                <asp:TextBox runat=server CssClass="regTextBox"  TextMode=Phone ID=regPhone onkeypress="validateForPhone()" ></asp:TextBox> <br />
                 <asp:TextBox runat=server CssClass="regTextBox" ID=regAdress ></asp:TextBox> <br />
                 <asp:CheckBox runat=server CssClass="regTextBox" ID=regForGurFace OnClick="regGurFace()" ></asp:CheckBox> <br /> 
                     <asp:TextBox runat=server CssClass="regTextBox contactFace" ID=contactFace  >

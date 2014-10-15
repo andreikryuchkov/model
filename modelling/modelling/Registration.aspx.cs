@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Net.Mail;
+using System.Net;
 
 namespace modelling
 {
@@ -18,14 +20,14 @@ namespace modelling
         Button ButtonReg;
 
         #region [ Property ]
-        
+
         private string password;
-        public string Password 
+        public string Password
         {
             get { return password; }
-            set 
+            set
             {
-                if (value != password) 
+                if (value != password)
                 {
                     password = value;
                 }
@@ -57,11 +59,11 @@ namespace modelling
 
         protected void Password_TextChanged(object sender, EventArgs e)
         {
-            if (((TextBox)sender).ID == "regPassword") 
+            if (((TextBox)sender).ID == "regPassword")
             {
                 Password = ((TextBox)sender).Text;
             }
-            if (((TextBox)sender).ID == "PasswordConfirm") 
+            if (((TextBox)sender).ID == "PasswordConfirm")
             {
                 PasswordRepeat = ((TextBox)sender).Text;
             }
@@ -69,7 +71,7 @@ namespace modelling
             {
                 ButtonReg.Enabled = false;
             }
-            else 
+            else
             {
                 ButtonReg.Enabled = true; ;
             }
@@ -95,9 +97,9 @@ namespace modelling
             }
         }
 
-        private bool ConfirmLogin() 
+        private bool ConfirmLogin()
         {
-            if (LoginTextBox.Text == "") 
+            if (LoginTextBox.Text == "")
             {
                 //regMessage.ForeColor = Color.Red;
                 //regMessage.Text = "Поле Логин не может быть пустым!";
@@ -124,23 +126,22 @@ namespace modelling
                 return;
             }
 
-            if (!ConfirmPasswords()) 
+            if (!ConfirmPasswords())
             {
                 ctwwSQL.Reader.Close();
                 return;
             }
 
-            if (((CheckBox)registrationView.FindControl("regForGurFace")).Checked) 
+            if (((CheckBox)registrationView.FindControl("regForGurFace")).Checked)
             {
-                ctwwSQL.TextCommand = "insert into companyFace(login,password,mail,name,family,phone,adress,contactFace) values('" +
+                ctwwSQL.TextCommand = "insert into СompanyFace(login,password,mail,name,contactFace,phone,adress) values('" +
                     ((TextBox)registrationView.FindControl("regLogin")).Text + "','" +
                     ((TextBox)registrationView.FindControl("regPassword")).Text + "','" +
                     ((TextBox)registrationView.FindControl("regmail")).Text + "','" +
                     ((TextBox)registrationView.FindControl("regName")).Text + "','" +
                     ((TextBox)registrationView.FindControl("regfamily")).Text + "','" +
                     ((TextBox)registrationView.FindControl("regPhone")).Text + "','" +
-                    ((TextBox)registrationView.FindControl("regAdress")).Text + "','" +
-                    ((TextBox)registrationView.FindControl("contactFace")).Text + "');"
+                    ((TextBox)registrationView.FindControl("regAdress")).Text + "');"
                 ;
             }
             else
@@ -157,9 +158,40 @@ namespace modelling
             }
             ctwwSQL.SqlCommand.ExecuteNonQuery();
             registrationView.Visible = false;
-            regMessageLog.Text = "На указанную Вами почту выслано письмо подтверждения регистрации. <a href=default.aspx>Возврат на главную.</a>"; 
+            SendMail("smtp.mail.ru", "vip.goodFood@bk.ru", "goodfoodTeam", ((TextBox)registrationView.FindControl("regmail")).Text, "Поздравляем с регистрацией", "Поздравляем с регистрацией");
+            regMessageLog.Text = "На указанную Вами почту выслано письмо подтверждения регистрации. <a href=default.aspx>Возврат на главную.</a>";
             // .Text = "На указанную Вами почту выслано письмо подтверждения регистрации ";
             return;
         }
+
+        public static void SendMail(string smtpServer, string from, string password, string mailto, string caption, string message, string attachFile = null)
+        {
+            try
+            {
+                MailMessage mail = new MailMessage();
+                mail.From = new MailAddress(from);
+                mail.To.Add(new MailAddress(mailto));
+                mail.Subject = caption;
+                mail.Body = message;
+                if (!string.IsNullOrEmpty(attachFile))
+                    mail.Attachments.Add(new Attachment(attachFile));
+                SmtpClient client = new SmtpClient();
+                client.Host = smtpServer;
+                client.Port = 587;
+                client.EnableSsl = true;
+                client.Credentials = new NetworkCredential(from.Split('@')[0], password);
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.Send(mail);
+                mail.Dispose();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Mail.Send: " + e.Message);
+            }
+        }
+        //03.10.14 	
+
+        //SendMail("smtp.mail.ru", "black_flower_power@mail.ru", "black1488", Mail.Text, "Поздравляем с регистрацией", "Поздравляем с регистрацией");
+
     }
 }
