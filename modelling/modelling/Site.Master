@@ -13,8 +13,11 @@
     <form runat="server">
     <div class="page">
         <div class="header">
+       
             <div class="loginDisplay">
-                
+                 <div style="width:15%; position:absolute;" >
+            <asp:Label ID="deposit" runat=server Text=""></asp:Label>
+        </div> 
             </div>
             <div class="loginLine">
                 <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">

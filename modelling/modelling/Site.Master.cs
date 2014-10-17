@@ -43,6 +43,18 @@ namespace modelling
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            deposit.Text = "";
+            if (Session["userID"] != null)
+            {
+                ctwwSQL.TextCommand = "select companyID from usr where id='" + Session["userID"].ToString() + "';";
+                ctwwSQL.Reader.Read();
+                if (!ctwwSQL.Reader.IsDBNull(0))
+                {
+                    ctwwSQL.TextCommand = "select deposit from company where ID='" + ctwwSQL.Reader[0].ToString() + "';";
+                    ctwwSQL.Reader.Read();
+                    deposit.Text = "На вашем счету: " + ctwwSQL.Reader[0].ToString();
+                }
+            }
            /* Categories.Items.Clear();
             ctwwSQL.TextCommand = "select * from category where parrentCategory is NULL;";
             while (ctwwSQL.Reader.Read())                                                            !!!!ЗАПОЛНЕНИЕ МЕНЮ!!!!

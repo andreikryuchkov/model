@@ -68,7 +68,7 @@ namespace modelling
             }
             string text = formatOutput(items);
             bagView.Text = text;
-            if (items.Count == 0)
+            if ((items.Count == 0))
             {
                 newOrder.Enabled = false;
             }

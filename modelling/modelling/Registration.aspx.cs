@@ -136,7 +136,7 @@ namespace modelling
             {
                 ctwwSQL.TextCommand = "insert into Company(requisites,name) values('" +
                     ((TextBox)registrationView.FindControl("regRequisites")).Text + "','" +
-                    ((TextBox)registrationView.FindControl("regCompanyName")).Text + "'); Select max(ID) from company;";
+                    ((TextBox)registrationView.FindControl("regCompanyName")).Text + "'); Select IDENT_CURRENT('company');";
                 ctwwSQL.Reader.Read();
                 companyID = "'"+Convert.ToString(ctwwSQL.Reader[0])+"'";
                 ctwwSQL.Reader.Close();
@@ -153,7 +153,7 @@ namespace modelling
                     ((TextBox)registrationView.FindControl("regmail")).Text + "','" +
                     ((TextBox)registrationView.FindControl("regName")).Text + "','" +
                     ((TextBox)registrationView.FindControl("regfamily")).Text + "'," +
-                    companyID + "); select max(ID) from usr;";
+                    companyID + "); Select IDENT_CURRENT('usr');";
             ctwwSQL.Reader.Read();
             string usrID = Convert.ToString(ctwwSQL.Reader[0]);
             ctwwSQL.Reader.Close();
