@@ -13,6 +13,15 @@ namespace modelling {
     public partial class Order {
         
         /// <summary>
+        /// regMessage элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label regMessage;
+        
+        /// <summary>
         /// Ordering элемент управления.
         /// </summary>
         /// <remarks>

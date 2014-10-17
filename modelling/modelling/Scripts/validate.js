@@ -1,4 +1,6 @@
-﻿var havErrorsPass;
+﻿//region валидация для регистрации 
+
+var havErrorsPass;
 var havErrorsLog;
 var havErrorsCompanyName;
 var havErrorsRequisites;
@@ -33,7 +35,7 @@ function ComparePassword()
         document.getElementById("MainContent_registrationView_PasswordConfirm").setAttribute("style", "background-color:rgba(255, 255, 255, 0.1);");
         document.getElementById("MainContent_regMessagePass").textContent = "";
         havErrorsPass = false;
-        ClearValidate();
+        ClearValidateRegistration();
     }
 }
 //MainContent_regMessage
@@ -49,7 +51,7 @@ function validateForLogin()
     {
         document.getElementById("MainContent_regMessageLog").textContent = "";
         havErrorsLog = false;
-        ClearValidate();
+        ClearValidateRegistration();
     }
 }
 
@@ -65,7 +67,7 @@ function validateForCompanyName()
     {
         document.getElementById("MainContent_regMessageCompanyName").textContent = "";
         havErrorsCompanyName = false;
-        ClearValidate();
+        ClearValidateRegistration();
     }
 }
 
@@ -81,7 +83,7 @@ function validateRequisites()
     {
         document.getElementById("MainContent_regMessageRequisites").textContent = "";
         havErrorsRequisites = false;
-        ClearValidate();
+        ClearValidateRegistration();
     }
 }
 
@@ -98,12 +100,50 @@ function changeForGurFace()
         document.getElementById("MainContent_regMessageRequisites").textContent = "";
         havErrorsCompanyName = false;
         havErrorsRequisites = false;
-        ClearValidate();
+        ClearValidateRegistration();
     }
 }
 
-function ClearValidate()
+function ClearValidateRegistration()
 {
     if (!havErrorsLog && !havErrorsPass && !havErrorsCompanyName && !havErrorsRequisites)
         document.getElementById("MainContent_registrationView_sendReg").disabled = false;
 }
+//endregion валидация для регистрации
+
+//region валидация для корзины
+
+function adressValidation()
+{
+    if (document.getElementById("MainContent_Ordering_adressList").SelectedItem == null)
+    {
+        if (document.getElementById("MainContent_Ordering_cityInput").value == "" ||
+         document.getElementById("MainContent_Ordering_streetInput").value == "" ||
+         document.getElementById("MainContent_Ordering_buildingInput").value == "")
+        {
+            document.getElementById("MainContent_regMessage").setAttribute("style", "text-color:#ff0000;");
+            document.getElementById("MainContent_regMessage").textContent = "Выберите адресс или введите новый!";
+            document.getElementById("MainContent_Ordering_orderDelivery").disabled = true;
+        }
+        else
+        {
+            ClearValidateOrder();
+        }
+
+    }
+    else
+    {
+        ClearValidateOrder();
+    }
+    //if (document.getElementById("MainContent_Ordering_cityInput").textContent == null)
+    //    if (document.getElementById("MainContent_Ordering_streetInput").textContent == null)
+    //        if (document.getElementById("MainContent_Ordering_buildingInput").textContent == null)
+}
+
+function ClearValidateOrder()
+{
+    document.getElementById("MainContent_regMessage").textContent="";
+    document.getElementById("MainContent_Ordering_orderDelivery").disabled = false;
+}
+
+//endregion валидация для корзины
