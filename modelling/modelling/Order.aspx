@@ -8,9 +8,15 @@
         </AnonymousTemplate>
         <LoggedInTemplate>
             <p style="width:30%; display:inline-block;" > 
-                Введите адрес доставки. Если адрес не указан, доставка будет оформлена на адрес, указанный при регистрации.
+               Выберите адрес из списка или введите новый:
             </p>
-            <asp:TextBox ID="adressInput" runat=server  CssClass="adressInput"> </asp:TextBox>
+            <asp:ListBox ID="adressList" runat=server  CssClass="adressInput"> </asp:ListBox>
+            <p style="width:30%; display:inline-block;" > 
+               Новый адрес:
+            </p>
+            <asp:TextBox ID="cityInput" runat=server  CssClass="adressInput"> </asp:TextBox> <br />
+            <asp:TextBox ID="streetInput" runat=server  CssClass="adressInput"> </asp:TextBox> <br />
+            <asp:TextBox ID="buildingInput" runat=server  CssClass="adressInput"> </asp:TextBox> <br />
             <div class="buttonContainer"> <asp:button ID="orderDelivery" OnClick="orderDelivery_click" runat=server Text="Заказать!" /> </div>
         </LoggedInTemplate>
     </asp:LoginView>
