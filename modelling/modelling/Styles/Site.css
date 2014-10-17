@@ -73,7 +73,7 @@ h5, h6 {
     padding: 0 0 0 20px;
 }
 .main {
-    background: url("/images/content.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+   background: url("/images/content.png") repeat-y scroll 0 0 rgba(0, 0, 0, 0);
     display: inline-block;
     margin: 0;
     min-height: 420px;
@@ -216,7 +216,7 @@ div.accountInfo {
     margin: 17px 0;
     width: 350px;
 }
-#newUserRegistrationContainer div {
+#fieldsNames {
     float: left;
     line-height: 3.3em;
     margin: 0 0 0 115px;
@@ -251,7 +251,7 @@ div.accountInfo {
 }
 .regSeparator {
     display: flex;
-    margin: 0 2px;
+    margin: -1px 2px;
 }
 #textBoxes {
     margin: 0 !important;

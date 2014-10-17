@@ -1,12 +1,12 @@
 ﻿function regGurFace()
 {
-    if (document.getElementById("MainContent_registrationView_regForGurFace").checked) {
-        document.getElementById("MainContent_registrationView_familyName").textContent = "Контактное лицо:";
-        document.getElementById("MainContent_registrationView_name").textContent = "Организация:";
+    if (!document.getElementById("MainContent_registrationView_regForGurFace").checked) {
+        document.getElementById("companyFieldsNames").setAttribute("style", "visibility: hidden;");
+        document.getElementById("companyFields").setAttribute("style", "visibility: hidden;");
     }
     else
     {
-        document.getElementById("MainContent_registrationView_familyName").textContent = "Фамилия:";
-        document.getElementById("MainContent_registrationView_name").textContent = "Имя:";
+        document.getElementById("companyFieldsNames").setAttribute("style", "visibility: visible;");
+        document.getElementById("companyFields").setAttribute("style", "visibility: visible;");
     }
 }

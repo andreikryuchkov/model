@@ -17,7 +17,7 @@
                 <p class="attentionMessage">Вы уже авторизованы на сайте! <br /> Необходимо выйти из системы для регистрации. </p>
             </LoggedInTemplate>
             <AnonymousTemplate>
-                  <div>
+                  <div id="fieldsNames">
                   Логин: <br />
                   <img src="/images/regSeparator.png" class="regSeparator" />
                        Пароль:  <br />
@@ -27,14 +27,23 @@
                
                    Электронная почта: <br />
                    <img src="/images/regSeparator.png" class="regSeparator" />
-                    <asp:Label ID="name" Text="Имя:" runat=server></asp:Label> <br />
+                    Имя: <!--<asp:Label ID="name" Text="Имя:" runat=server></asp:Label> --><br />
                     <img src="/images/regSeparator.png" class="regSeparator" />
-                   <asp:Label ID="familyName" Text="Фамилия:" runat=server></asp:Label><br />
+                    Фамилия: <!--<asp:Label ID="familyName" Text="Фамилия:" runat=server></asp:Label>--><br />
                    <img src="/images/regSeparator.png" class="regSeparator" />
                     Контактный телефон: <br />
                     <img src="/images/regSeparator.png" class="regSeparator" />
-                    Адрес: <br />
+                    Город: <br />
+                    <img src="/images/regSeparator.png" class="regSeparator" />
+                    Улица: <br />
+                    <img src="/images/regSeparator.png" class="regSeparator" />
+                    Дом: <br />
                     Для юр. лиц: <br />
+                    <div style="margin:0; visibility:hidden;" id="companyFieldsNames">
+                            Реквизиты: <br />
+                            <img src="/images/regSeparator.png" class="regSeparator" />
+                            Имя компании:  <br />
+                    </div>
                 </div>
                 <div id="textBoxes">
                 <asp:TextBox CssClass="regTextBox" runat=server MaxLength=20  ID=regLogin onkeyup="validateForLogin()" ></asp:TextBox> <br />
@@ -44,10 +53,17 @@
                 <asp:TextBox runat=server CssClass="regTextBox" MaxLength=20  ID=regName  ></asp:TextBox> <br />
                 <asp:TextBox runat=server CssClass="regTextBox" MaxLength=20  ID=regFamily ></asp:TextBox> <br />
                 <asp:TextBox runat=server CssClass="regTextBox"  TextMode=Phone ID=regPhone onkeypress="validateForPhone()" ></asp:TextBox> <br />
-                <asp:TextBox runat=server CssClass="regTextBox" ID=regAdress ></asp:TextBox> <br />
+                <asp:TextBox runat=server CssClass="regTextBox" ID=regCity ></asp:TextBox> <br />
+                <asp:TextBox runat=server CssClass="regTextBox" ID=regStreet ></asp:TextBox> <br />
+                <asp:TextBox runat=server CssClass="regTextBox" ID=regBuilding ></asp:TextBox> <br />
                 <asp:CheckBox runat=server CssClass="regTextBox" ID=regForGurFace OnClick="regGurFace()" ></asp:CheckBox> <br /> 
-                    <asp:TextBox runat=server CssClass="regTextBox contactFace" ID=contactFace  >
-                    </asp:TextBox> <br />        
+                 <div style="margin:0; visibility:hidden;" id="companyFields">
+                        <asp:TextBox runat=server CssClass="regTextBox" MaxLength=20  ID=regRequisites  ></asp:TextBox> <br />
+                        <asp:TextBox runat=server CssClass="regTextBox" MaxLength=20  ID=regCompanyName ></asp:TextBox> <br />
+                 </div>
+
+                    <!--<asp:TextBox runat=server CssClass="regTextBox contactFace" ID=contactFace  >
+                    </asp:TextBox> <br />        -->
                 </div>
 
                 <div style="width:90%;">

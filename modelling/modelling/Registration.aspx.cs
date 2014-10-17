@@ -131,34 +131,44 @@ namespace modelling
                 ctwwSQL.Reader.Close();
                 return;
             }
-
+            string companyID;
             if (((CheckBox)registrationView.FindControl("regForGurFace")).Checked)
             {
-                ctwwSQL.TextCommand = "insert into СompanyFace(login,password,mail,name,contactFace,phone,adress) values('" +
-                    ((TextBox)registrationView.FindControl("regLogin")).Text + "','" +
-                    ((TextBox)registrationView.FindControl("regPassword")).Text + "','" +
-                    ((TextBox)registrationView.FindControl("regmail")).Text + "','" +
-                    ((TextBox)registrationView.FindControl("regName")).Text + "','" +
-                    ((TextBox)registrationView.FindControl("regfamily")).Text + "','" +
-                    ((TextBox)registrationView.FindControl("regPhone")).Text + "','" +
-                    ((TextBox)registrationView.FindControl("regAdress")).Text + "');"
-                ;
+                ctwwSQL.TextCommand = "insert into Company(requisites,name) values('" +
+                    ((TextBox)registrationView.FindControl("regRequisites")).Text + "','" +
+                    ((TextBox)registrationView.FindControl("regCompanyName")).Text + "'); Select max(ID) from company;";
+                ctwwSQL.Reader.Read();
+                companyID = "'"+Convert.ToString(ctwwSQL.Reader[0])+"'";
+                ctwwSQL.Reader.Close();
             }
             else
             {
-                ctwwSQL.TextCommand = "insert into usr(login,password,mail,name,family,phone,adress) values('" +
+                companyID = "NULL";
+            }
+
+
+            ctwwSQL.TextCommand = "insert into usr(login,password,mail,name,family,companyID) values('" +
                     ((TextBox)registrationView.FindControl("regLogin")).Text + "','" +
                     ((TextBox)registrationView.FindControl("regPassword")).Text + "','" +
                     ((TextBox)registrationView.FindControl("regmail")).Text + "','" +
                     ((TextBox)registrationView.FindControl("regName")).Text + "','" +
-                    ((TextBox)registrationView.FindControl("regfamily")).Text + "','" +
-                    ((TextBox)registrationView.FindControl("regPhone")).Text + "','" +
-                    ((TextBox)registrationView.FindControl("regAdress")).Text + "');"
-                    ;
-            }
-            ctwwSQL.SqlCommand.ExecuteNonQuery();
+                    ((TextBox)registrationView.FindControl("regfamily")).Text + "'," +
+                    companyID + "); select max(ID) from usr;";
+            ctwwSQL.Reader.Read();
+            string usrID = Convert.ToString(ctwwSQL.Reader[0]);
+            ctwwSQL.Reader.Close();
+
+            ctwwSQL.TextCommand= "insert into Adress(usrID,city,street,building) values('" +
+                    usrID + "','" +
+                    ((TextBox)registrationView.FindControl("regCity")).Text + "','" +
+                    ((TextBox)registrationView.FindControl("regStreet")).Text + "','" +
+                    ((TextBox)registrationView.FindControl("regBuilding")).Text + "');";
+
+            ctwwSQL.TextCommand = "insert into phone(usrID,phone) values('" +
+                    usrID + "','" +
+                    ((TextBox)registrationView.FindControl("regPhone")).Text + "');";
             registrationView.Visible = false;
-            SendMail("smtp.mail.ru", "vip.goodFood@bk.ru", "goodfoodTeam", ((TextBox)registrationView.FindControl("regmail")).Text, "Поздравляем с регистрацией", "Поздравляем с регистрацией");
+            //SendMail("smtp.mail.ru", "vip.goodFood@bk.ru", "goodfoodTeam", ((TextBox)registrationView.FindControl("regmail")).Text, "Поздравляем с регистрацией", "Поздравляем с регистрацией");
             regMessageLog.Text = "На указанную Вами почту выслано письмо подтверждения регистрации. <a href=default.aspx>Возврат на главную.</a>";
             // .Text = "На указанную Вами почту выслано письмо подтверждения регистрации ";
             return;
