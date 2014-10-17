@@ -113,9 +113,16 @@ function ClearValidateRegistration()
 
 //region валидация для корзины
 
+var isListBoxClick;
+
+function ListBoxClick()
+{
+    isListBoxClick=true;
+    adressValidation();
+}
 function adressValidation()
 {
-    if (document.getElementById("MainContent_Ordering_adressList").SelectedItem == null)
+    if (!isListBoxClick)
     {
         if (document.getElementById("MainContent_Ordering_cityInput").value == "" ||
          document.getElementById("MainContent_Ordering_streetInput").value == "" ||

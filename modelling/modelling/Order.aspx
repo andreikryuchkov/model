@@ -15,7 +15,7 @@
             <p style="width:30%; display:inline-block;" > 
                Выберите адрес из списка или введите новый:
             </p>
-            <asp:ListBox ID="adressList" runat=server  CssClass="adressInput" OnClick="adressValidation()"> </asp:ListBox>
+            <asp:ListBox ID="adressList" runat=server  CssClass="adressInput" OnClick="ListBoxClick()" > </asp:ListBox>
             <p style="width:30%; display:inline-block;" > 
                Новый адрес:
             </p>
