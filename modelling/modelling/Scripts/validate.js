@@ -1,5 +1,8 @@
 ﻿var havErrorsPass;
 var havErrorsLog;
+var havErrorsCompanyName;
+var havErrorsRequisites;
+
 function passwordChanged()
 {
     if (document.getElementById("MainContent_registrationView_PasswordConfirm").value != "")
@@ -50,8 +53,57 @@ function validateForLogin()
     }
 }
 
+function validateForCompanyName()
+{
+    if (document.getElementById("MainContent_registrationView_regCompanyName").value == "") {
+        document.getElementById("MainContent_regMessageCompanyName").setAttribute("style", "text-color:#ff0000;");
+        document.getElementById("MainContent_regMessageCompanyName").textContent = "Поле Имя компании не может быть пустым!";
+        document.getElementById("MainContent_registrationView_sendReg").disabled = true;
+        havErrorsCompanyName = true;
+    }
+    else
+    {
+        document.getElementById("MainContent_regMessageCompanyName").textContent = "";
+        havErrorsCompanyName = false;
+        ClearValidate();
+    }
+}
+
+function validateRequisites()
+{
+    if (document.getElementById("MainContent_registrationView_regRequisites").value == "") {
+        document.getElementById("MainContent_regMessageRequisites").setAttribute("style", "text-color:#ff0000;");
+        document.getElementById("MainContent_regMessageRequisites").textContent = "Поле Реквизиты не может быть пустым!";
+        document.getElementById("MainContent_registrationView_sendReg").disabled = true;
+        havErrorsRequisites = true;
+    }
+    else
+    {
+        document.getElementById("MainContent_regMessageRequisites").textContent = "";
+        havErrorsRequisites = false;
+        ClearValidate();
+    }
+}
+
+function changeForGurFace()
+{
+    if (document.getElementById("MainContent_registrationView_regForGurFace").checked)
+    {
+        validateForCompanyName();
+        validateRequisites();
+    }
+    else
+    {
+        document.getElementById("MainContent_regMessageCompanyName").textContent = "";
+        document.getElementById("MainContent_regMessageRequisites").textContent = "";
+        havErrorsCompanyName = false;
+        havErrorsRequisites = false;
+        ClearValidate();
+    }
+}
+
 function ClearValidate()
 {
-    if (!havErrorsLog && !havErrorsPass)
+    if (!havErrorsLog && !havErrorsPass && !havErrorsCompanyName && !havErrorsRequisites)
         document.getElementById("MainContent_registrationView_sendReg").disabled = false;
 }
