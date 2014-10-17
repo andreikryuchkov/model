@@ -12,6 +12,8 @@
     <div id="newUserRegistrationContainer"> 
     <div style="width:90%;"><asp:Label ID="regMessageLog" Text="" runat=server></asp:Label></div>
     <div style="width:90%;"><asp:Label ID="regMessagePass" Text="" runat=server></asp:Label></div>
+    <div style="width:90%;"><asp:Label ID="regMessageCompanyName" Text="" runat=server></asp:Label></div>
+    <div style="width:90%;"><asp:Label ID="regMessageRequisites" Text="" runat=server></asp:Label></div>
         <asp:LoginView ID="registrationView" runat=server>
             <LoggedInTemplate>
                 <p class="attentionMessage">Вы уже авторизованы на сайте! <br /> Необходимо выйти из системы для регистрации. </p>
@@ -56,10 +58,10 @@
                 <asp:TextBox runat=server CssClass="regTextBox" ID=regCity ></asp:TextBox> <br />
                 <asp:TextBox runat=server CssClass="regTextBox" ID=regStreet ></asp:TextBox> <br />
                 <asp:TextBox runat=server CssClass="regTextBox" ID=regBuilding ></asp:TextBox> <br />
-                <asp:CheckBox runat=server CssClass="regTextBox" ID=regForGurFace OnClick="regGurFace()" ></asp:CheckBox> <br /> 
+                <asp:CheckBox runat=server CssClass="regTextBox" ID=regForGurFace Name="regForGurFace" OnClick="regGurFace()" onchange="changeForGurFace()"></asp:CheckBox> <br /> 
                  <div style="margin:0; visibility:hidden;" id="companyFields">
-                        <asp:TextBox runat=server CssClass="regTextBox" MaxLength=20  ID=regRequisites  ></asp:TextBox> <br />
-                        <asp:TextBox runat=server CssClass="regTextBox" MaxLength=20  ID=regCompanyName ></asp:TextBox> <br />
+                <asp:TextBox runat=server CssClass="regTextBox" MaxLength=20  ID=regRequisites  onkeyup="validateRequisites()"></asp:TextBox> <br />
+                <asp:TextBox runat=server CssClass="regTextBox" MaxLength=20  ID=regCompanyName onkeyup="validateForCompanyName()"></asp:TextBox> <br />
                  </div>
 
                     <!--<asp:TextBox runat=server CssClass="regTextBox contactFace" ID=contactFace  >
