@@ -14,9 +14,11 @@
             <p style="width:30%; display:inline-block;" > 
                Новый адрес:
             </p>
-            <asp:TextBox ID="cityInput" runat=server  CssClass="adressInput"> </asp:TextBox> <br />
-            <asp:TextBox ID="streetInput" runat=server  CssClass="adressInput"> </asp:TextBox> <br />
-            <asp:TextBox ID="buildingInput" runat=server  CssClass="adressInput"> </asp:TextBox> <br />
+            <div style="display: inline-block; width: 69%;">
+            <p style="width:50px;">Город: </p><asp:TextBox ID="cityInput" runat=server  CssClass="adressInput"> </asp:TextBox> <br />
+            <p style="width:50px;">Улица: </p> <asp:TextBox ID="streetInput" runat=server  CssClass="adressInput"> </asp:TextBox> <br />
+            <p style="width:50px;">Дом: </p> <asp:TextBox ID="buildingInput" runat=server  CssClass="adressInput"> </asp:TextBox> <br />
+            </div>
             <div class="buttonContainer"> <asp:button ID="orderDelivery" OnClick="orderDelivery_click" runat=server Text="Заказать!" /> </div>
         </LoggedInTemplate>
     </asp:LoginView>

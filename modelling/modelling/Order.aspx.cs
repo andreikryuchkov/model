@@ -34,6 +34,7 @@ namespace modelling
         {
             var s = Session["itemsInBag"];
             List<Item> items = (List<Item>)s;
+            ((ListBox)(Ordering.FindControl("adressList"))).Items.Clear();
             if (items.Count == 0)
             {
                 ((Button)(Ordering.FindControl("orderDelivery"))).Enabled = false;
@@ -58,17 +59,20 @@ namespace modelling
         protected void orderDelivery_click(object sender, EventArgs e)
         {
             string adressID;
-            if (((TextBox)(Ordering.FindControl("adressInput"))).Text.Length == 0)
+            if ((((TextBox)(Ordering.FindControl("cityInput"))).Text.Length == 0))
             {
                 adressID = ((ListBox)(Ordering.FindControl("adressList"))).SelectedValue;
+                if (adressID == "")
+                    return;
             }
             else
             {
-                ctwwSQL.TextCommand="insert into adress(usrID,city,street,building) values('" +
+                string command = "insert into adress(usrID,city,street,building) values('" +
                     Convert.ToInt32(Session["userID"]) + "','" +
                     ((TextBox)(Ordering.FindControl("cityInput"))).Text + "','" +
                     ((TextBox)(Ordering.FindControl("streetInput"))).Text + "','" +
-                    ((TextBox)(Ordering.FindControl("buildingInput"))).Text + "'; Select max(ID) from adress;";
+                    ((TextBox)(Ordering.FindControl("buildingInput"))).Text + "'); Select max(ID) from adress;"; 
+                ctwwSQL.TextCommand=command;
                 ctwwSQL.Reader.Read();
                 adressID =Convert.ToString(ctwwSQL.Reader[0]);
             }
@@ -76,16 +80,18 @@ namespace modelling
             var s = Session["itemsInBag"];
             List<Item> items = (List<Item>)s;
             int usrID = Convert.ToInt32(Session["userID"]);
-            ctwwSQL.TextCommand = "INSERT INTO ord(statusID,adressID) values (" + 1 + ",'" + adressID + "'); SELECT max(ID) FROM ord WHERE adressID='"+adressID+"';";
+            ctwwSQL.TextCommand = "INSERT INTO ord(statusID,adressID) values ('" + 1 + "','" + adressID + "'); SELECT max(ID) FROM ord WHERE adressID='"+adressID+"';";
             ctwwSQL.Reader.Read();
             int orderID = (int)ctwwSQL.Reader[0];
             foreach (Item iter in items)
             {
-                ctwwSQL.TextCommand = "INSERT INTO itemOrdered(ord,item) values (" + orderID + "," + iter.id + ");";
+                ctwwSQL.TextCommand = "INSERT INTO itemOrdered(ordID,itemID) values (" + orderID + "," + iter.id + ");";
             }
             items.Clear();
             Session["itemsInBag"] = items;
+            Ordering.Visible = false;
             orderStatus.Text = "Ваш заказ принят!";
+
         }
     }
 }
