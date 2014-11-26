@@ -21,5 +21,20 @@ namespace AdminConsol
         {
             Form1.loginForm.Close();
         }
+
+        private void toolStripDropDownButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addNewCategoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void deleteCategoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
