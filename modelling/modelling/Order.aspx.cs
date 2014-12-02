@@ -84,6 +84,7 @@ namespace modelling
             List<Item> items = (List<Item>)s;
             int usrID = Convert.ToInt32(Session["userID"]);
             ctwwSQL.TextCommand = "INSERT INTO ord(statusID,adressID) values ('" + 1 + "','" + adressID + "'); Select IDENT_CURRENT('ord');";
+//            ctwwSQL.TextCommand = "INSERT INTO ord(statusID,adressID) values ( 1 ,'" + adressID + "'); Select IDENT_CURRENT('ord');";
             ctwwSQL.Reader.Read();
             string orderID = ctwwSQL.Reader[0].ToString();
             foreach (Item iter in items)
