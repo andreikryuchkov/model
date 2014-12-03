@@ -41,6 +41,15 @@ namespace modelling
         }
 
 
+        public void exit(object sender, EventArgs e)
+        {
+
+            FormsAuthentication.SignOut();
+            Session["userID"] = null;
+            Response.Redirect("/default.aspx");
+        }
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             deposit.Text = "";
@@ -48,11 +57,11 @@ namespace modelling
             {
                 ctwwSQL.TextCommand = "select companyID from usr where id='" + Session["userID"].ToString() + "';";
                 ctwwSQL.Reader.Read();
-                if (!ctwwSQL.Reader.IsDBNull(0))
+                if (!(ctwwSQL.Reader.IsDBNull(0)))
                 {
                     ctwwSQL.TextCommand = "select deposit from company where ID='" + ctwwSQL.Reader[0].ToString() + "';";
                     ctwwSQL.Reader.Read();
-                    deposit.Text = "На вашем счету: " + ctwwSQL.Reader[0].ToString();
+                    deposit.Text = "На Вашем счете: " + ctwwSQL.Reader[0].ToString();
                 }
             }
            /* Categories.Items.Clear();
