@@ -36,25 +36,5 @@ namespace AdminConsol
         {
 
         }
-
-        private void Form2_Load(object sender, EventArgs e)
-        {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "_DATABASE1_MDFDataSet.Ord". При необходимости она может быть перемещена или удалена.
-            this.ordTableAdapter.Fill(this._DATABASE1_MDFDataSet.Ord);
-
-        }
-
-        private void fillByToolStripButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.ordTableAdapter.FillBy(this._DATABASE1_MDFDataSet.Ord);
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
-
-        }
     }
 }

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.addNewCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,22 +41,7 @@
             this.stopOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.confirmOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.ordBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.fillByToolStrip = new System.Windows.Forms.ToolStrip();
-            this.fillByToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addressIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dATABASE1MDFDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this._DATABASE1_MDFDataSet = new AdminConsol._DATABASE1_MDFDataSet();
-            this.ordTableAdapter = new AdminConsol._DATABASE1_MDFDataSetTableAdapters.OrdTableAdapter();
             this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ordBindingSource)).BeginInit();
-            this.fillByToolStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dATABASE1MDFDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this._DATABASE1_MDFDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStripDropDownButton1
@@ -162,96 +146,17 @@
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.iDDataGridViewTextBoxColumn,
-            this.statusIDDataGridViewTextBoxColumn,
-            this.addressIDDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.ordBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 53);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(872, 82);
-            this.dataGridView1.TabIndex = 1;
-            // 
-            // ordBindingSource
-            // 
-            this.ordBindingSource.DataMember = "Ord";
-            this.ordBindingSource.DataSource = this.dATABASE1MDFDataSetBindingSource;
-            // 
-            // fillByToolStrip
-            // 
-            this.fillByToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fillByToolStripButton});
-            this.fillByToolStrip.Location = new System.Drawing.Point(0, 25);
-            this.fillByToolStrip.Name = "fillByToolStrip";
-            this.fillByToolStrip.Size = new System.Drawing.Size(884, 25);
-            this.fillByToolStrip.TabIndex = 2;
-            this.fillByToolStrip.Text = "fillByToolStrip";
-            // 
-            // fillByToolStripButton
-            // 
-            this.fillByToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.fillByToolStripButton.Name = "fillByToolStripButton";
-            this.fillByToolStripButton.Size = new System.Drawing.Size(35, 22);
-            this.fillByToolStripButton.Text = "FillBy";
-            this.fillByToolStripButton.Click += new System.EventHandler(this.fillByToolStripButton_Click);
-            // 
-            // iDDataGridViewTextBoxColumn
-            // 
-            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // statusIDDataGridViewTextBoxColumn
-            // 
-            this.statusIDDataGridViewTextBoxColumn.DataPropertyName = "StatusID";
-            this.statusIDDataGridViewTextBoxColumn.HeaderText = "StatusID";
-            this.statusIDDataGridViewTextBoxColumn.Name = "statusIDDataGridViewTextBoxColumn";
-            // 
-            // addressIDDataGridViewTextBoxColumn
-            // 
-            this.addressIDDataGridViewTextBoxColumn.DataPropertyName = "AddressID";
-            this.addressIDDataGridViewTextBoxColumn.HeaderText = "AddressID";
-            this.addressIDDataGridViewTextBoxColumn.Name = "addressIDDataGridViewTextBoxColumn";
-            // 
-            // dATABASE1MDFDataSetBindingSource
-            // 
-            this.dATABASE1MDFDataSetBindingSource.DataSource = this._DATABASE1_MDFDataSet;
-            this.dATABASE1MDFDataSetBindingSource.Position = 0;
-            // 
-            // _DATABASE1_MDFDataSet
-            // 
-            this._DATABASE1_MDFDataSet.DataSetName = "_DATABASE1_MDFDataSet";
-            this._DATABASE1_MDFDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // ordTableAdapter
-            // 
-            this.ordTableAdapter.ClearBeforeFill = true;
-            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 435);
-            this.Controls.Add(this.fillByToolStrip);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.toolStrip1);
             this.Name = "Form2";
             this.Text = "Workform";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
-            this.Load += new System.EventHandler(this.Form2_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ordBindingSource)).EndInit();
-            this.fillByToolStrip.ResumeLayout(false);
-            this.fillByToolStrip.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dATABASE1MDFDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this._DATABASE1_MDFDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -271,16 +176,7 @@
         private System.Windows.Forms.ToolStripMenuItem stopOrderToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem confirmOrderToolStripMenuItem;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.BindingSource dATABASE1MDFDataSetBindingSource;
-        private _DATABASE1_MDFDataSet _DATABASE1_MDFDataSet;
-        private System.Windows.Forms.BindingSource ordBindingSource;
-        private _DATABASE1_MDFDataSetTableAdapters.OrdTableAdapter ordTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn statusIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn addressIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.ToolStrip fillByToolStrip;
-        private System.Windows.Forms.ToolStripButton fillByToolStripButton;
+
 
 
     }
