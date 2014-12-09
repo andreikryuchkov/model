@@ -65,10 +65,6 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
-    <Content Include="App_Data\Database1.mdf" />
-    <Content Include="App_Data\Database1_log.ldf">
-      <DependentUpon>Database1.mdf</DependentUpon>
-    </Content>
     <Content Include="bag.aspx" />
     <Content Include="Order.aspx" />
     <Content Include="Scripts\scripts.js" />
@@ -182,6 +178,9 @@
   <ItemGroup>
     <Content Include="Account\Web.config" />
     <Content Include="Site.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

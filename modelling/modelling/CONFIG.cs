@@ -7,7 +7,7 @@ namespace modelling
 {
     public class config
     {
-        public string dataBaseConnectionString = @"Data Source=ACER;Initial Catalog=DATABASE1.MDF;Integrated Security=True";
+        public string dataBaseConnectionString = @"Data Source=111-PC;Initial Catalog=DATABASE1.MDF;Integrated Security=True";
     }
     
 }

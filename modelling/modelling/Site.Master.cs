@@ -46,7 +46,7 @@ namespace modelling
 
             FormsAuthentication.SignOut();
             Session["userID"] = null;
-            Response.Redirect("/default.aspx");
+            Response.Redirect("/model/default.aspx");
         }
 
 
