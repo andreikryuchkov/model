@@ -17,7 +17,7 @@ namespace modelling
             result += "<div id=\"bagList\">";
             foreach (var item in input)
             {
-                result += "<div class=\"listItem\">" + "<a href=\"bag.aspx?deleteItem=" + item.id + "\"><img class=\"DeleteItemIcon\" src=\"images/bagDelete.png\"/></a>" +
+                result += "<div class=\"listItem\">" + "<a href=\"bag.aspx?deleteItem=" + item.id + "\"><img class=\"DeleteItemIcon\" src=\"/images/bagDelete.png\"/></a>" +
                     "<h3>" + item.name + "</h3>" +
                   "<img class=\"listItemImg\" description=\"" + item.id + "\" src=\"" + item.photo + "\"/>";
                 result += "<p style=\"Text-decoration:underline;\" >";
@@ -36,7 +36,7 @@ namespace modelling
             items.Clear();
             Session["itemsInBag"] = items;
             bagView.Text = "";*/
-            Response.Redirect("/order.aspx");
+            Response.Redirect("order.aspx");
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -48,7 +48,7 @@ namespace modelling
                 Item newItem=new Item(Convert.ToInt32(Request.QueryString["addItem"]));
                 items.Add(newItem);
                 Session["itemsInBag"] = items;
-                Response.Redirect("/catalog.aspx");
+                Response.Redirect("catalog.aspx");
                 return;
             }
             if ((Request.QueryString["deleteItem"]) != null) 

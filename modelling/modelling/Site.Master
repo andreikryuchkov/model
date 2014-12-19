@@ -29,7 +29,7 @@
                         
                     </AnonymousTemplate>
                     <LoggedInTemplate>
-                        [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Выход" LogoutPageUrl="~/"/> ]
+                         <asp:button ID="Exit" runat="server" OnClick="exit" Text="Выход"/> 
                     </LoggedInTemplate>
                 </asp:LoginView>
 
