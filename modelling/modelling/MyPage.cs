@@ -7,12 +7,27 @@ using System.Web.Security;
 using System.Web.UI.WebControls;
 using System.Web.UI;
 using System.ComponentModel;
+using System.Security.Cryptography;
+using System.Text;
 
 
 namespace modelling
 {
+
     public class ClassToWorckWhithSQL : INotifyPropertyChanged
     {
+        public string GetMD5Hash(string input)
+        {
+            var x = new System.Security.Cryptography.MD5CryptoServiceProvider();
+            var bs = Encoding.UTF8.GetBytes(input);
+            bs = x.ComputeHash(bs);
+            var s = new StringBuilder();
+            foreach (var b in bs)
+            {
+                s.Append(b.ToString("x2").ToLower());
+            }
+            return s.ToString();
+        }
         #region [ Initialise ]
 
         public ClassToWorckWhithSQL() 

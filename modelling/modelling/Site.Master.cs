@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Web.Security;
 using System.Security.Cryptography;
+using System.Text;
 
 namespace modelling
 {
@@ -26,7 +27,7 @@ namespace modelling
                 ((Label)HeadLoginView.FindControl("authInfo")).Text = "Неверная пара логин/пароль! Повторите ввод.";
                 return;
             }
-            if (((string)r.GetValue(0)) ==  ((TextBox)HeadLoginView.FindControl("loginPassword")).Text)
+            if (((string)r.GetValue(0)) ==  ctwwSQL.GetMD5Hash(((TextBox)HeadLoginView.FindControl("loginPassword")).Text))
             {
                 Session.Add("userID", r.GetValue(1));
                 int a = Convert.ToInt32( Session["userID"]);
@@ -41,12 +42,38 @@ namespace modelling
         }
 
 
+        protected void forgotPassword(object sender, EventArgs e)
+        {
+            ctwwSQL.TextCommand = "select mail from usr where login='" + ((TextBox)HeadLoginView.FindControl("loginUsrName")).Text + "';";
+            SqlDataReader r;
+            r = ctwwSQL.ExecuteReader;
+            if (!(r.Read()))
+            {
+                ((Label)HeadLoginView.FindControl("authInfo")).ForeColor = System.Drawing.Color.Red;
+                ((Label)HeadLoginView.FindControl("authInfo")).Text = "Пользователь не найден!";
+                return;
+            }
+            else
+            { 
+                Random rand= new Random(DateTime.Now.Millisecond);
+                string newPwd = ctwwSQL.GetMD5Hash(rand.Next(10000).ToString().Substring(0, 5));
+                ctwwSQL.TextCommand = "update usr set password='" + ctwwSQL.GetMD5Hash(newPwd) +
+                    "' where login='" + ((TextBox)HeadLoginView.FindControl("loginUsrName")).Text + "';";
+                bool res=ctwwSQL.ExecuteNonQuery;
+                //mailto
+                ((Label)HeadLoginView.FindControl("authInfo")).ForeColor = System.Drawing.Color.Red;
+                ((Label)HeadLoginView.FindControl("authInfo")).Text = "На вашу почту было отправлено письмо с новым паролем";
+            }
+
+        }
+
+
         public void exit(object sender, EventArgs e)
         {
 
             FormsAuthentication.SignOut();
             Session["userID"] = null;
-            Response.Redirect("/default.aspx");
+            Response.Redirect("/model/default.aspx");
         }
 
 

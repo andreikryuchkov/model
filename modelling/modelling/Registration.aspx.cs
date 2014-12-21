@@ -102,7 +102,7 @@ namespace modelling
             if (LoginTextBox.Text == "")
             {
                 //regMessage.ForeColor = Color.Red;
-                //regMessage.Text = "Поле Логин не может быть пустым!";
+                regMessageLog.Text = "Поле Логин не может быть пустым!";
                 return false;
             }
             if ((int)ctwwSQL.Reader.GetValue(0) != 0)

@@ -19,6 +19,10 @@ Global
 		{C80A289F-C611-45A3-BA1E-DADDC28BE81A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C80A289F-C611-45A3-BA1E-DADDC28BE81A}.Release|x86.ActiveCfg = Release|x86
 		{C80A289F-C611-45A3-BA1E-DADDC28BE81A}.Release|x86.Build.0 = Release|x86
+		{C80A289F-C611-45A3-BA1E-DADDC28BE81A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C80A289F-C611-45A3-BA1E-DADDC28BE81A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C80A289F-C611-45A3-BA1E-DADDC28BE81A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C80A289F-C611-45A3-BA1E-DADDC28BE81A}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
