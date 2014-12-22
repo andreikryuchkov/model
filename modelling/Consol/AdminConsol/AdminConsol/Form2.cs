@@ -2,37 +2,35 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Collections;
 
 namespace AdminConsol
 {
     public partial class Form2 : Form
     {
-        private DataGridView dataGridView1 = new DataGridView(); 
-        private BindingSource bindingSource1 = new BindingSource();
-        private SqlDataAdapter dataAdapter = new SqlDataAdapter();
+        static String dataBaseConnectionString = "Data Source=SYSHCHIPANOV-H;" + "Initial Catalog=DATABASE1.MDF;" + "Integrated Security=True";
+        SqlConnection conn = new SqlConnection(dataBaseConnectionString);
+
         public Form2()
         {
-
-            dataGridView1.Dock = DockStyle.Fill;
             InitializeComponent();
         }
 
         private void Form2_Load(object sender, System.EventArgs e)
         {
-            // Bind the DataGridView to the BindingSource
-            // and load the data from the database.
-            dataGridView1.DataSource = bindingSource1;
-            GetData("select o.ID, city,street,house,u.name,family,mail,phone,c.name,property from [DATABASE1.MDF].[dbo].[Ord] o, [DATABASE1.MDF].[dbo].[Address] A, [DATABASE1.MDF].[dbo].[usr] u, [DATABASE1.MDF].[dbo].[Phone] p, [DATABASE1.MDF].[dbo].[Company] c where StatusID = 1 and  A.[ID] = o.AddressID and u.ID = A.usrID and p.usrID = u.ID and c.ID = u.CompanyID");
+            //conn.Open();
         }
 
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
+            conn.Close();
             Form1.loginForm.Close();
         }
 
@@ -46,47 +44,345 @@ namespace AdminConsol
 
         }
 
-        private void deleteCategoryToolStripMenuItem_Click(object sender, EventArgs e)
+        private void toolStripButton1_Click(object sender, EventArgs e)
         {
+            DepositPanel.Visible = true;
+            DepositPanel.Location = OrderPanel.Location;
+            OrderPanel.Visible = false;
+            ItemsPanel.Visible = false;
+            CategoryPanel.Visible = false;
+        }
 
+        private void toolStripDropDownButton3_Click(object sender, EventArgs e)
+        {
+            OrderPanel.Visible = true;
+            DepositPanel.Visible = false;
+            ItemsPanel.Visible = false;
+            CategoryPanel.Visible = false;
+        }
+
+        private void toolStripDropDownButton2_Click(object sender, EventArgs e)
+        {
+            ItemsPanel.Visible = true;
+            ItemsPanel.Location = OrderPanel.Location;
+            OrderPanel.Visible = false;
+            DepositPanel.Visible = false;
+            CategoryPanel.Visible = false;
         }
 
 
-        private void GetData(string selectCommand)
+        private void toolStripButton1_Click_2(object sender, EventArgs e)
         {
-            try
-            {
-                // Specify a connection string. Replace the given value with a 
-                // valid connection string for a Northwind SQL Server sample
-                // database accessible to your system.
-                String connectionString =
-                    "Data Source=SYSHCHIPANOV-H;" + "Initial Catalog=DATABASE1.MDF;" + "Integrated Security=True";
-
-                // Create a new data adapter based on the specified query.
-                dataAdapter = new SqlDataAdapter(selectCommand, connectionString);
-
-                // Create a command builder to generate SQL update, insert, and
-                // delete commands based on selectCommand. These are used to
-                // update the database.
-                SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
-
-                // Populate a new data table and bind it to the BindingSource.
-                DataTable table = new DataTable();
-                table.Locale = System.Globalization.CultureInfo.InvariantCulture;
-                dataAdapter.Fill(table);
-                bindingSource1.DataSource = table;
-
-                // Resize the DataGridView columns to fit the newly loaded content.
-                dataGridView1.AutoResizeColumns(
-                    DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader);
-            }
-            catch (SqlException)
-            {
-                MessageBox.Show("To run this example, replace the value of the " +
-                   "connectionString variable with a connection string that is " +
-                    "valid for your system.");
-            }
+            CategoryPanel.Visible = true;
+            CategoryPanel.Location = OrderPanel.Location;
+            ItemsPanel.Visible = false;
+            OrderPanel.Visible = false;
+            DepositPanel.Visible = false;
         }
+
+        private void RefreshOrdersList_Click(object sender, EventArgs e)
+        {
+            SqlCommand cmd = new SqlCommand("select  o.ID, city, street, house, u.id ,u.name, family, mail,CompanyID  from [dbo].[Ord] o, [dbo].[Address] A, usr u where StatusID = 1 and  A.[ID] = o.AddressID and u.ID = A.usrID", conn);
+            Object[] allData  = new Object[100];
+            NewOrdersList.Items.Clear();
+            conn.Open();
+            SqlDataReader dataReader = cmd.ExecuteReader();
+            if (dataReader.HasRows)
+            {
+                NewOrdersList.BeginUpdate();
+                while (dataReader.Read())
+                {
+                    dataReader.GetSqlValues(allData);
+                    NewOrdersList.Items.Add("OrderID " + allData[0].ToString() + " CITY " + allData[1].ToString() + " Street " + allData[2].ToString() + " House " + allData[3].ToString() + " UserID " + allData[4].ToString() + " User Name " + allData[5].ToString() + " LastName " + allData[6].ToString() + " mail " + allData[7].ToString() + " CompanyID " + allData[8].ToString());
+                }
+                NewOrdersList.EndUpdate();
+                
+            }
+            MessageBox.Show("Order list refreshed", "The orders list is refreshed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            conn.Close();
+
+        }
+
+        private void ShowUserPhone_Click(object sender, EventArgs e)
+        {
+            String command = "select phone from phone where usrID = " + UserID.Text.ToString();
+            SqlCommand cmd = new SqlCommand(command, conn);
+            conn.Open();
+            SqlDataReader dataReader = cmd.ExecuteReader();
+            dataReader.Read();
+            if (dataReader.HasRows)
+            {
+                String result = dataReader.GetString(0);
+                UserPhone.Text = result;
+            }
+            else
+            {
+                MessageBox.Show("No Phone", "This user has no contact phone", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            
+            conn.Close();
+        }
+
+        private void ShowOrderItems_Click(object sender, EventArgs e)
+        {
+            if (OrderID.Text.ToString() == "")
+            {
+                MessageBox.Show("Order ID is null", "Enter order ID", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            String command = "select name, price, [description] from [Item], [ItemOrdered] where [ItemOrdered].ItemID = [Item].ID and [ItemOrdered].OrdID = " + OrderID.Text.ToString();
+            SqlCommand cmd = new SqlCommand(command, conn);
+            Object[] allData = new Object[100];
+            OrderItemsList.Items.Clear();
+            conn.Open();
+            SqlDataReader dataReader = cmd.ExecuteReader();
+            if (dataReader.HasRows)
+            {
+                OrderItemsList.BeginUpdate();
+                while (dataReader.Read())
+                {
+                    dataReader.GetSqlValues(allData);
+                    OrderItemsList.Items.Add("Name: " + allData[0].ToString() + " Price: " + allData[1].ToString() + " Description: " + allData[2].ToString() );
+                }
+                OrderItemsList.EndUpdate();
+
+            }
+            MessageBox.Show("The order items list is refreshed", "Order items list", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            conn.Close();
+        }
+
+        private void ConfirmOrder_Click(object sender, EventArgs e)
+        {
+            if (ConfirmOrderId.Text.ToString() == "")
+            {
+                MessageBox.Show("Enter order ID to confirm", "Order ID is null ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            String command = "UPDATE [dbo].[Ord] SET [StatusID] = 2 WHERE ID = " + ConfirmOrderId.Text.ToString();
+            SqlCommand cmd = new SqlCommand(command, conn);          
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            MessageBox.Show("Order status updated", "Order status", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            conn.Close();
+        }
+
+        private void RefuseOrder_Click(object sender, EventArgs e)
+        {
+            if (RefuseOrderId.Text.ToString() == "")
+            {
+                MessageBox.Show("Enter order ID to confirm", "Order ID is null ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            String command = "UPDATE [dbo].[Ord] SET [StatusID] = 5 WHERE ID = " + RefuseOrderId.Text.ToString();
+            SqlCommand cmd = new SqlCommand(command, conn);
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            MessageBox.Show("Order status updated", "Order status", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            conn.Close();
+        }
+
+        private void FinishOrder_Click(object sender, EventArgs e)
+        {
+            if (FinishOrderId.Text.ToString() == "")
+            {
+                MessageBox.Show("Enter order ID to confirm", "Order ID is null ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            String command = "UPDATE [dbo].[Ord] SET [StatusID] = 4 WHERE ID = " + FinishOrderId.Text.ToString();
+            SqlCommand cmd = new SqlCommand(command, conn);
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            MessageBox.Show("Order status updated", "Order status", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            conn.Close();
+        }
+
+        private void ShowDeposit_Click(object sender, EventArgs e)
+        {
+            if (Company.Text.ToString() == "")
+            {
+                MessageBox.Show("Enter company ID", "Company ID Is null ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            String command = "Select [deposit] from company where  ID =" + Company.Text.ToString();
+            SqlCommand cmd = new SqlCommand(command, conn);
+            conn.Open();
+            SqlDataReader dataReader = cmd.ExecuteReader();
+            dataReader.Read();
+            if (dataReader.HasRows)
+            {
+                String result = dataReader.GetDecimal(0).ToString();
+                DepositOld.Text = result;
+            }
+            else
+            {
+                MessageBox.Show("There is no company with such ID", "No company", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            
+            conn.Close();
+        }
+
+        private void AddToDeposit_Click(object sender, EventArgs e)
+        {
+            if (DepositNew.Text.ToString() == "")
+            {
+                MessageBox.Show("Enter value to add", "Deposit is null Is", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            String commandPart = DepositNew.Text.ToString();
+            commandPart = commandPart.Replace(",", ".");
+            
+            String command = "UPDATE [dbo].[Company] SET [Deposit] = [Deposit] +  " + commandPart + " WHERE ID = " + Company.Text.ToString();
+            SqlCommand cmd = new SqlCommand(command, conn);
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            MessageBox.Show("Deposit updated", "Deposit status", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            conn.Close();
+        }
+
+        private void AddItem_Click(object sender, EventArgs e)
+        {
+            if ((ItemName.Text.ToString() == "") || (ItemPrice.Text.ToString() == "") || (ItemPhotoLink.Text.ToString() == "") || (ItemCategory.Text.ToString() == "") || (ItemDescription.Text.ToString() == ""))
+            {
+                MessageBox.Show("Some fields are empty", "Empty fields", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            String checkComm = "select * from category where id = " + ItemCategory.Text.ToString();
+            SqlCommand chkcmd = new SqlCommand(checkComm, conn);
+            conn.Open();
+            SqlDataReader reader = chkcmd.ExecuteReader();
+            reader.Read();
+            if (!reader.HasRows)
+            {
+                MessageBox.Show("Wrong category ID", "Add failed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                conn.Close();
+                return;
+            }
+            conn.Close();
+            String command = "INSERT INTO [dbo].[Item] ([name],[price],[categoryID],[photo],[description]) VALUES ('" + ItemName.Text.ToString() + "' ,"+ ItemPrice.Text.ToString() +" ,'" +ItemCategory.Text.ToString()+ "' ,'" +ItemPhotoLink.Text.ToString()+"' ,'"+ ItemDescription.Text.ToString()+"')";
+            SqlCommand cmd = new SqlCommand(command, conn);
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            MessageBox.Show("New Item added", "Item Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            conn.Close();
+        }
+
+        private void DeleteItem_Click(object sender, EventArgs e)
+        {
+            if (ItemID.Text.ToString() == "")
+            {
+                MessageBox.Show("Enter Item ID", "Item ID is null Is", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            String command = "Delete from item WHERE ID = " + ItemID.Text.ToString();
+            SqlCommand cmd = new SqlCommand(command, conn);
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            MessageBox.Show("Item deleted", "Item Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            conn.Close();        
+        }
+
+        private void ChengeItem_Click(object sender, EventArgs e)
+        {
+            if ((ItemID.Text.ToString() == "") && (ItemName.Text.ToString() == "") && (ItemPrice.Text.ToString() == "") && (ItemPhotoLink.Text.ToString() == "") && (ItemDescription.Text.ToString() == ""))
+            {
+                MessageBox.Show("All Fields are empty", "Empty fields", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (ItemID.Text.ToString() == "")
+            {
+                MessageBox.Show("Enter Item ID", "Item ID is null Is", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            String command = "UPDATE [dbo].[Item] SET";
+            if (ItemName.Text.ToString() != "")
+            {
+                command += " Name ='" + ItemName.Text.ToString() + "'";
+            }
+            if (ItemPrice.Text.ToString() != "")
+            {
+                command += " ,Price =" + ItemPrice.Text.ToString();
+            }
+            if (ItemPhotoLink.Text.ToString() != "")
+            {
+                command += " ,Photo ='" + ItemPhotoLink.Text.ToString() + "'";
+            }
+            if (ItemDescription.Text.ToString() != "")
+            {
+                command += " ,Description ='" + ItemDescription.Text.ToString()+"'";
+            }
+            command += " where ID = " + ItemID.Text.ToString();
+            SqlCommand cmd = new SqlCommand(command, conn);
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            MessageBox.Show("Item changed", "Item Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            conn.Close();
+        }
+
+        private void AddCategory_Click(object sender, EventArgs e)
+        {
+            if ((CategoryName.Text.ToString() == "")|| (CategoryPhotoLink.Text.ToString() == "")  || (CategoryDescription.Text.ToString() == ""))
+            {
+                MessageBox.Show("Some fields are empty", "Empty fields", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            String command = "INSERT INTO [dbo].[Category] ([name],[photo],[description]) VALUES ('" + CategoryName.Text.ToString() + "' ,'" + CategoryPhotoLink.Text.ToString() + "' ,'" + CategoryDescription.Text.ToString() + "')";
+            SqlCommand cmd = new SqlCommand(command, conn);
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            MessageBox.Show("New Category added", "Category Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            conn.Close();
+        }
+
+        private void DeleteCategory_Click(object sender, EventArgs e)
+        {
+            if (CategoryID.Text.ToString() == "")
+            {
+                MessageBox.Show("Enter Category ID", "Category ID is null Is", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            String command = "Delete from Category WHERE ID = " + CategoryID.Text.ToString();
+            SqlCommand cmd = new SqlCommand(command, conn);
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            MessageBox.Show("Category deleted", "Category Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            conn.Close();
+        }
+
+        private void ChengeCategory_Click(object sender, EventArgs e)
+        {
+            
+            
+            if ((CategoryID.Text.ToString() == "") && (CategoryName.Text.ToString() == "") && (CategoryPhotoLink.Text.ToString() == "") && (CategoryDescription.Text.ToString() == ""))
+            {
+                MessageBox.Show("All Fields are empty", "Empty fields", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (CategoryID.Text.ToString() == "")
+            {
+                MessageBox.Show("Enter Category ID", "Category ID is null Is", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            String command = "UPDATE [dbo].[Category] SET";
+            if (CategoryName.Text.ToString() != "")
+            {
+                command += " Name ='" + CategoryName.Text.ToString() + "'";
+            }
+            if (CategoryPhotoLink.Text.ToString() != "")
+            {
+                command += " ,Photo ='" + CategoryPhotoLink.Text.ToString() + "'";
+            }
+            if (CategoryDescription.Text.ToString() != "")
+            {
+                command += " ,Description ='" + CategoryDescription.Text.ToString() + "'";
+            }
+            command += " where ID = " + CategoryID.Text.ToString();
+            SqlCommand cmd = new SqlCommand(command, conn);
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            MessageBox.Show("Category changed", "Category Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            conn.Close();
+        }       
     }
 }
 
