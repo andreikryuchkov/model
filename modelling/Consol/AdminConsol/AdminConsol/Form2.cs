@@ -105,6 +105,11 @@ namespace AdminConsol
 
         private void ShowUserPhone_Click(object sender, EventArgs e)
         {
+            if (UserID.Text.ToString() == "")
+            {
+                MessageBox.Show("User ID is null", "Enter user ID", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             String command = "select phone from phone where usrID = " + UserID.Text.ToString();
             SqlCommand cmd = new SqlCommand(command, conn);
             conn.Open();
