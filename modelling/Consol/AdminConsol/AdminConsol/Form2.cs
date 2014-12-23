@@ -236,6 +236,8 @@ namespace AdminConsol
             }
             String commandPart = DepositNew.Text.ToString();
             commandPart = commandPart.Replace(",", ".");
+            commandPart = commandPart.Replace(" ", "0");
+
             
             String command = "UPDATE [dbo].[Company] SET [Deposit] = [Deposit] +  " + commandPart + " WHERE ID = " + Company.Text.ToString();
             SqlCommand cmd = new SqlCommand(command, conn);
@@ -279,6 +281,20 @@ namespace AdminConsol
                 MessageBox.Show("Enter Item ID", "Item ID is null Is", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+            //-----
+            String checkComm = "select * from item where id = " + ItemID.Text.ToString();
+            SqlCommand chkcmd = new SqlCommand(checkComm, conn);
+            conn.Open();
+            SqlDataReader reader = chkcmd.ExecuteReader();
+            reader.Read();
+            if (!reader.HasRows)
+            {
+                MessageBox.Show("Wrong item ID", "Delete failed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                conn.Close();
+                return;
+            }
+            conn.Close();
+            //-----
             String command = "Delete from item WHERE ID = " + ItemID.Text.ToString();
             SqlCommand cmd = new SqlCommand(command, conn);
             conn.Open();
@@ -294,6 +310,20 @@ namespace AdminConsol
                 MessageBox.Show("All Fields are empty", "Empty fields", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+            //-----
+            String checkComm = "select * from item where id = " + ItemID.Text.ToString();
+            SqlCommand chkcmd = new SqlCommand(checkComm, conn);
+            conn.Open();
+            SqlDataReader reader = chkcmd.ExecuteReader();
+            reader.Read();
+            if (!reader.HasRows)
+            {
+                MessageBox.Show("Wrong item ID", "Change failed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                conn.Close();
+                return;
+            }
+            conn.Close();
+            //-----
             if (ItemID.Text.ToString() == "")
             {
                 MessageBox.Show("Enter Item ID", "Item ID is null Is", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -337,6 +367,7 @@ namespace AdminConsol
             cmd.ExecuteNonQuery();
             MessageBox.Show("New Category added", "Category Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
             conn.Close();
+
         }
 
         private void DeleteCategory_Click(object sender, EventArgs e)
@@ -346,6 +377,20 @@ namespace AdminConsol
                 MessageBox.Show("Enter Category ID", "Category ID is null Is", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+            //-----
+            String checkComm = "select * from category where id = " + CategoryID.Text.ToString();
+            SqlCommand chkcmd = new SqlCommand(checkComm, conn);
+            conn.Open();
+            SqlDataReader reader = chkcmd.ExecuteReader();
+            reader.Read();
+            if (!reader.HasRows)
+            {
+                MessageBox.Show("Wrong category ID", "Delete failed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                conn.Close();
+                return;
+            }
+            conn.Close();
+            //-----
             String command = "Delete from Category WHERE ID = " + CategoryID.Text.ToString();
             SqlCommand cmd = new SqlCommand(command, conn);
             conn.Open();
@@ -356,9 +401,27 @@ namespace AdminConsol
 
         private void ChengeCategory_Click(object sender, EventArgs e)
         {
-            
-            
-            if ((CategoryID.Text.ToString() == "") && (CategoryName.Text.ToString() == "") && (CategoryPhotoLink.Text.ToString() == "") && (CategoryDescription.Text.ToString() == ""))
+
+            if (CategoryID.Text.ToString() == "")
+            {
+                MessageBox.Show("Enter Category ID", "Category ID is null Is", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            //-----
+            String checkComm = "select * from category where id = " + CategoryID.Text.ToString();
+            SqlCommand chkcmd = new SqlCommand(checkComm, conn);
+            conn.Open();
+            SqlDataReader reader = chkcmd.ExecuteReader();
+            reader.Read();
+            if (!reader.HasRows)
+            {
+                MessageBox.Show("Wrong category ID", "Change failed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                conn.Close();
+                return;
+            }
+            conn.Close();
+            //-----
+            if ((CategoryName.Text.ToString() == "") && (CategoryPhotoLink.Text.ToString() == "") && (CategoryDescription.Text.ToString() == ""))
             {
                 MessageBox.Show("All Fields are empty", "Empty fields", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -384,9 +447,17 @@ namespace AdminConsol
             command += " where ID = " + CategoryID.Text.ToString();
             SqlCommand cmd = new SqlCommand(command, conn);
             conn.Open();
-            cmd.ExecuteNonQuery();
-            MessageBox.Show("Category changed", "Category Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            conn.Close();
+            Int32 count = cmd.ExecuteNonQuery();           
+            if (count > 0)
+            {
+                MessageBox.Show("Category changed", "Category Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                conn.Close();
+            }
+            else
+            {
+                MessageBox.Show("No Category changed ID is wrong", "Category Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                conn.Close();
+            }
         }
 
         private void ShowItems_Click(object sender, EventArgs e)
@@ -453,7 +524,69 @@ namespace AdminConsol
             }
             MessageBox.Show("Company list refreshed", "The Company list is refreshed", MessageBoxButtons.OK, MessageBoxIcon.Information);
             conn.Close();
-        }       
+        }
+
+        private void Add_Click(object sender, EventArgs e)
+        {
+            AddPanel.Visible = true;
+            lbl_CategoryID.Visible = false;
+            CategoryID.Visible = false;
+            AddCategory.Visible = true;
+            DeleteCategory.Visible = false;
+            ChangeCategory.Visible = false;
+
+        }
+
+        private void Delete_Click(object sender, EventArgs e)
+        {
+            AddPanel.Visible = false;
+            lbl_CategoryID.Visible = true;
+            CategoryID.Visible = true;
+            AddCategory.Visible = false;
+            DeleteCategory.Visible = true;
+            ChangeCategory.Visible = false;
+        }
+
+        private void Change_Click(object sender, EventArgs e)
+        {
+            AddPanel.Visible = true;
+            lbl_CategoryID.Visible = true;
+            CategoryID.Visible = true;
+            AddCategory.Visible = false;
+            DeleteCategory.Visible = false;
+            ChangeCategory.Visible = true;
+        }
+
+        private void Add1_Click(object sender, EventArgs e)
+        {
+            AddPanel2.Visible = true;
+            lbl_Item.Visible = false;
+            ItemID.Visible = false;
+            DeleteItem.Visible = false;
+            ChengeItem.Visible = false;
+            AddItem.Visible = true;
+        }
+
+        private void Delete2_Click(object sender, EventArgs e)
+        {
+            AddPanel2.Visible = false;
+            lbl_Item.Visible = true;
+            ItemID.Visible = true;
+            DeleteItem.Visible = true;
+            ChengeItem.Visible = false;
+            AddItem.Visible = false;
+        }
+
+        private void Change2_Click(object sender, EventArgs e)
+        {
+            AddPanel2.Visible = true;
+            lbl_Item.Visible = true;
+            ItemID.Visible = true;
+            DeleteItem.Visible = false;
+            ChengeItem.Visible = true;
+            AddItem.Visible = false;
+        }
+               
     }
 }
 
