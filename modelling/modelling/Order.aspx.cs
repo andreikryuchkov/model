@@ -83,6 +83,31 @@ namespace modelling
             var s = Session["itemsInBag"];
             List<Item> items = (List<Item>)s;
             int usrID = Convert.ToInt32(Session["userID"]);
+
+            ctwwSQL.TextCommand = "select companyID from usr where id='" + Session["userID"].ToString() + "';";
+            ctwwSQL.Reader.Read();
+            if (!(ctwwSQL.Reader.IsDBNull(0)))
+            {
+                int companyID = Convert.ToInt32(ctwwSQL.Reader[0]);
+                ctwwSQL.TextCommand = "select deposit from company where ID='" + ctwwSQL.Reader[0].ToString() + "';";
+                ctwwSQL.Reader.Read();
+                double price=0;
+                foreach(Item iter in items)
+                {
+                    price+=iter.price;
+                }
+                if (Convert.ToDouble(ctwwSQL.Reader[0]) < price)
+                {
+                    String JS = "$(document).ready(function () {alert('на вашем счете недостаточно средств!')});";
+                    Response.Write(JS);
+                    return;
+                }
+                else 
+                {
+                    ctwwSQL.TextCommand = "update company set deposit='"+(Convert.ToDouble(ctwwSQL.Reader[0])-price)+"' where ID="+companyID+";";
+                }
+            }
+
             ctwwSQL.TextCommand = "INSERT INTO ord(statusID,adressID) values ('" + 1 + "','" + adressID + "'); Select IDENT_CURRENT('ord');";
 //            ctwwSQL.TextCommand = "INSERT INTO ord(statusID,adressID) values ( 1 ,'" + adressID + "'); Select IDENT_CURRENT('ord');";
             ctwwSQL.Reader.Read();

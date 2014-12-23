@@ -102,7 +102,7 @@ namespace modelling
             if (LoginTextBox.Text == "")
             {
                 //regMessage.ForeColor = Color.Red;
-                regMessageLog.Text = "Поле Логин не может быть пустым!";
+                //regMessage.Text = "Поле Логин не может быть пустым!";
                 return false;
             }
             if ((int)ctwwSQL.Reader.GetValue(0) != 0)
@@ -149,7 +149,7 @@ namespace modelling
 
             ctwwSQL.TextCommand = "insert into usr(login,password,mail,name,family,companyID) values('" +
                     ((TextBox)registrationView.FindControl("regLogin")).Text + "','" +
-                    ((TextBox)registrationView.FindControl("regPassword")).Text + "','" +
+                    ctwwSQL.GetMD5Hash(((TextBox)registrationView.FindControl("regPassword")).Text) + "','" +
                     ((TextBox)registrationView.FindControl("regmail")).Text + "','" +
                     ((TextBox)registrationView.FindControl("regName")).Text + "','" +
                     ((TextBox)registrationView.FindControl("regfamily")).Text + "'," +
@@ -168,7 +168,7 @@ namespace modelling
                     usrID + "','" +
                     ((TextBox)registrationView.FindControl("regPhone")).Text + "');";
             registrationView.Visible = false;
-            //SendMail("smtp.mail.ru", "vip.goodFood@bk.ru", "goodfoodTeam", ((TextBox)registrationView.FindControl("regmail")).Text, "Поздравляем с регистрацией", "Поздравляем с регистрацией");
+            SendMail("smtp.mail.ru", "vip.goodFood@bk.ru", "goodfoodTeam", ((TextBox)registrationView.FindControl("regmail")).Text, "Поздравляем с регистрацией", "Поздравляем с регистрацией");
             regMessageLog.Text = "На указанную Вами почту выслано письмо подтверждения регистрации. <a href=default.aspx>Возврат на главную.</a>";
             // .Text = "На указанную Вами почту выслано письмо подтверждения регистрации ";
             return;

@@ -40,6 +40,11 @@ namespace modelling
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if ((Request.QueryString["added"]) != null)
+            {
+                String JS = "$(document).ready(function () {alert('товар добавлен в корзину!')});";
+                Response.Write(JS);
+            }
             categoryView.Text = "";
             if ((Request.QueryString["category"]) != null)
             {

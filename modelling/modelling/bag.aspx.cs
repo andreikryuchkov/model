@@ -48,7 +48,7 @@ namespace modelling
                 Item newItem=new Item(Convert.ToInt32(Request.QueryString["addItem"]));
                 items.Add(newItem);
                 Session["itemsInBag"] = items;
-                Response.Redirect("catalog.aspx");
+                Response.Redirect("catalog.aspx?added=1");
                 return;
             }
             if ((Request.QueryString["deleteItem"]) != null) 
