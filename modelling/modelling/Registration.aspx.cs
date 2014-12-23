@@ -149,7 +149,7 @@ namespace modelling
 
             ctwwSQL.TextCommand = "insert into usr(login,password,mail,name,family,companyID) values('" +
                     ((TextBox)registrationView.FindControl("regLogin")).Text + "','" +
-                    ((TextBox)registrationView.FindControl("regPassword")).Text + "','" +
+                    ctwwSQL.GetMD5Hash(((TextBox)registrationView.FindControl("regPassword")).Text) + "','" +
                     ((TextBox)registrationView.FindControl("regmail")).Text + "','" +
                     ((TextBox)registrationView.FindControl("regName")).Text + "','" +
                     ((TextBox)registrationView.FindControl("regfamily")).Text + "'," +
@@ -168,37 +168,13 @@ namespace modelling
                     usrID + "','" +
                     ((TextBox)registrationView.FindControl("regPhone")).Text + "');";
             registrationView.Visible = false;
-            //SendMail("smtp.mail.ru", "vip.goodFood@bk.ru", "goodfoodTeam", ((TextBox)registrationView.FindControl("regmail")).Text, "Поздравляем с регистрацией", "Поздравляем с регистрацией");
+            ctwwSQL.mailTo(((TextBox)registrationView.FindControl("regmail")).Text, "Поздравляем с регистрацией");
             regMessageLog.Text = "На указанную Вами почту выслано письмо подтверждения регистрации. <a href=default.aspx>Возврат на главную.</a>";
             // .Text = "На указанную Вами почту выслано письмо подтверждения регистрации ";
             return;
         }
 
-        public static void SendMail(string smtpServer, string from, string password, string mailto, string caption, string message, string attachFile = null)
-        {
-            try
-            {
-                MailMessage mail = new MailMessage();
-                mail.From = new MailAddress(from);
-                mail.To.Add(new MailAddress(mailto));
-                mail.Subject = caption;
-                mail.Body = message;
-                if (!string.IsNullOrEmpty(attachFile))
-                    mail.Attachments.Add(new Attachment(attachFile));
-                SmtpClient client = new SmtpClient();
-                client.Host = smtpServer;
-                client.Port = 587;
-                client.EnableSsl = true;
-                client.Credentials = new NetworkCredential(from.Split('@')[0], password);
-                client.DeliveryMethod = SmtpDeliveryMethod.Network;
-                client.Send(mail);
-                mail.Dispose();
-            }
-            catch (Exception e)
-            {
-                throw new Exception("Mail.Send: " + e.Message);
-            }
-        }
+       
         //03.10.14 	
 
         //SendMail("smtp.mail.ru", "black_flower_power@mail.ru", "black1488", Mail.Text, "Поздравляем с регистрацией", "Поздравляем с регистрацией");
