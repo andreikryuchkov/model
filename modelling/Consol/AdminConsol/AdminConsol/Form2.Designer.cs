@@ -42,6 +42,7 @@
             this.AddToDeposit = new System.Windows.Forms.Button();
             this.ShowDeposit = new System.Windows.Forms.Button();
             this.DepositPanel = new System.Windows.Forms.Panel();
+            this.DepositNew = new System.Windows.Forms.MaskedTextBox();
             this.OrderPanel = new System.Windows.Forms.Panel();
             this.OrderItemsList = new System.Windows.Forms.ListBox();
             this.ShowOrderItems = new System.Windows.Forms.Button();
@@ -67,6 +68,8 @@
             this.deleteCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.ItemsPanel = new System.Windows.Forms.Panel();
+            this.ItemID = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.ChengeItem = new System.Windows.Forms.Button();
             this.DeleteItem = new System.Windows.Forms.Button();
             this.AddItem = new System.Windows.Forms.Button();
@@ -92,9 +95,12 @@
             this.CategoryName = new System.Windows.Forms.TextBox();
             this.CategoryDescription = new System.Windows.Forms.TextBox();
             this.CategoryID = new System.Windows.Forms.TextBox();
-            this.DepositNew = new System.Windows.Forms.MaskedTextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.ItemID = new System.Windows.Forms.TextBox();
+            this.ItemsList = new System.Windows.Forms.ListBox();
+            this.ShowItems = new System.Windows.Forms.Button();
+            this.CategoryList = new System.Windows.Forms.ListBox();
+            this.ShowCategory = new System.Windows.Forms.Button();
+            this.CompanyList = new System.Windows.Forms.ListBox();
+            this.ShowCompany = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             this.DepositPanel.SuspendLayout();
             this.OrderPanel.SuspendLayout();
@@ -111,7 +117,7 @@
             this.DepositButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(830, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(751, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -220,6 +226,8 @@
             // 
             // DepositPanel
             // 
+            this.DepositPanel.Controls.Add(this.ShowCompany);
+            this.DepositPanel.Controls.Add(this.CompanyList);
             this.DepositPanel.Controls.Add(this.DepositNew);
             this.DepositPanel.Controls.Add(this.Company);
             this.DepositPanel.Controls.Add(this.ShowDeposit);
@@ -230,9 +238,17 @@
             this.DepositPanel.Controls.Add(this.DepositOld);
             this.DepositPanel.Location = new System.Drawing.Point(756, 38);
             this.DepositPanel.Name = "DepositPanel";
-            this.DepositPanel.Size = new System.Drawing.Size(270, 156);
+            this.DepositPanel.Size = new System.Drawing.Size(721, 156);
             this.DepositPanel.TabIndex = 9;
             this.DepositPanel.Visible = false;
+            // 
+            // DepositNew
+            // 
+            this.DepositNew.Location = new System.Drawing.Point(145, 91);
+            this.DepositNew.Mask = "999 999 999 999.00";
+            this.DepositNew.Name = "DepositNew";
+            this.DepositNew.Size = new System.Drawing.Size(106, 20);
+            this.DepositNew.TabIndex = 9;
             // 
             // OrderPanel
             // 
@@ -258,7 +274,7 @@
             this.OrderPanel.Controls.Add(this.NewOrdersList);
             this.OrderPanel.Location = new System.Drawing.Point(0, 28);
             this.OrderPanel.Name = "OrderPanel";
-            this.OrderPanel.Size = new System.Drawing.Size(733, 291);
+            this.OrderPanel.Size = new System.Drawing.Size(750, 291);
             this.OrderPanel.TabIndex = 10;
             this.OrderPanel.Visible = false;
             // 
@@ -465,6 +481,8 @@
             // 
             // ItemsPanel
             // 
+            this.ItemsPanel.Controls.Add(this.ShowItems);
+            this.ItemsPanel.Controls.Add(this.ItemsList);
             this.ItemsPanel.Controls.Add(this.ItemID);
             this.ItemsPanel.Controls.Add(this.label19);
             this.ItemsPanel.Controls.Add(this.ChengeItem);
@@ -482,9 +500,25 @@
             this.ItemsPanel.Controls.Add(this.label7);
             this.ItemsPanel.Location = new System.Drawing.Point(0, 325);
             this.ItemsPanel.Name = "ItemsPanel";
-            this.ItemsPanel.Size = new System.Drawing.Size(403, 153);
+            this.ItemsPanel.Size = new System.Drawing.Size(750, 153);
             this.ItemsPanel.TabIndex = 11;
             this.ItemsPanel.Visible = false;
+            // 
+            // ItemID
+            // 
+            this.ItemID.Location = new System.Drawing.Point(129, 7);
+            this.ItemID.Name = "ItemID";
+            this.ItemID.Size = new System.Drawing.Size(148, 20);
+            this.ItemID.TabIndex = 4;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(5, 14);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(41, 13);
+            this.label19.TabIndex = 3;
+            this.label19.Text = "Item ID";
             // 
             // ChengeItem
             // 
@@ -598,6 +632,8 @@
             // 
             // CategoryPanel
             // 
+            this.CategoryPanel.Controls.Add(this.ShowCategory);
+            this.CategoryPanel.Controls.Add(this.CategoryList);
             this.CategoryPanel.Controls.Add(this.ChengeCategory);
             this.CategoryPanel.Controls.Add(this.DeleteCategory);
             this.CategoryPanel.Controls.Add(this.AddCategory);
@@ -609,9 +645,9 @@
             this.CategoryPanel.Controls.Add(this.CategoryName);
             this.CategoryPanel.Controls.Add(this.CategoryDescription);
             this.CategoryPanel.Controls.Add(this.CategoryID);
-            this.CategoryPanel.Location = new System.Drawing.Point(409, 325);
+            this.CategoryPanel.Location = new System.Drawing.Point(756, 206);
             this.CategoryPanel.Name = "CategoryPanel";
-            this.CategoryPanel.Size = new System.Drawing.Size(406, 113);
+            this.CategoryPanel.Size = new System.Drawing.Size(721, 290);
             this.CategoryPanel.TabIndex = 12;
             this.CategoryPanel.Visible = false;
             // 
@@ -709,35 +745,65 @@
             this.CategoryID.Size = new System.Drawing.Size(148, 20);
             this.CategoryID.TabIndex = 1;
             // 
-            // DepositNew
+            // ItemsList
             // 
-            this.DepositNew.Location = new System.Drawing.Point(145, 91);
-            this.DepositNew.Mask = "999 999 999 999.00";
-            this.DepositNew.Name = "DepositNew";
-            this.DepositNew.Size = new System.Drawing.Size(106, 20);
-            this.DepositNew.TabIndex = 9;
+            this.ItemsList.FormattingEnabled = true;
+            this.ItemsList.Location = new System.Drawing.Point(406, 7);
+            this.ItemsList.Name = "ItemsList";
+            this.ItemsList.Size = new System.Drawing.Size(341, 108);
+            this.ItemsList.TabIndex = 5;
             // 
-            // label19
+            // ShowItems
             // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(5, 14);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(41, 13);
-            this.label19.TabIndex = 3;
-            this.label19.Text = "Item ID";
+            this.ShowItems.Location = new System.Drawing.Point(665, 120);
+            this.ShowItems.Name = "ShowItems";
+            this.ShowItems.Size = new System.Drawing.Size(82, 22);
+            this.ShowItems.TabIndex = 6;
+            this.ShowItems.Text = "Show Menu";
+            this.ShowItems.UseVisualStyleBackColor = true;
+            this.ShowItems.Click += new System.EventHandler(this.ShowItems_Click);
             // 
-            // ItemID
+            // CategoryList
             // 
-            this.ItemID.Location = new System.Drawing.Point(129, 7);
-            this.ItemID.Name = "ItemID";
-            this.ItemID.Size = new System.Drawing.Size(148, 20);
-            this.ItemID.TabIndex = 4;
+            this.CategoryList.FormattingEnabled = true;
+            this.CategoryList.Location = new System.Drawing.Point(409, 3);
+            this.CategoryList.Name = "CategoryList";
+            this.CategoryList.Size = new System.Drawing.Size(309, 69);
+            this.CategoryList.TabIndex = 6;
+            // 
+            // ShowCategory
+            // 
+            this.ShowCategory.Location = new System.Drawing.Point(616, 78);
+            this.ShowCategory.Name = "ShowCategory";
+            this.ShowCategory.Size = new System.Drawing.Size(102, 23);
+            this.ShowCategory.TabIndex = 7;
+            this.ShowCategory.Text = "Show Category";
+            this.ShowCategory.UseVisualStyleBackColor = true;
+            this.ShowCategory.Click += new System.EventHandler(this.ShowCategory_Click);
+            // 
+            // CompanyList
+            // 
+            this.CompanyList.FormattingEnabled = true;
+            this.CompanyList.Location = new System.Drawing.Point(281, 13);
+            this.CompanyList.Name = "CompanyList";
+            this.CompanyList.Size = new System.Drawing.Size(437, 95);
+            this.CompanyList.TabIndex = 10;
+            // 
+            // ShowCompany
+            // 
+            this.ShowCompany.Location = new System.Drawing.Point(621, 119);
+            this.ShowCompany.Name = "ShowCompany";
+            this.ShowCompany.Size = new System.Drawing.Size(97, 24);
+            this.ShowCompany.TabIndex = 11;
+            this.ShowCompany.Text = "Show company";
+            this.ShowCompany.UseVisualStyleBackColor = true;
+            this.ShowCompany.Click += new System.EventHandler(this.ShowCompany_Click);
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(830, 387);
+            this.ClientSize = new System.Drawing.Size(751, 322);
             this.Controls.Add(this.DepositPanel);
             this.Controls.Add(this.CategoryPanel);
             this.Controls.Add(this.ItemsPanel);
@@ -830,6 +896,12 @@
         private System.Windows.Forms.MaskedTextBox DepositNew;
         private System.Windows.Forms.TextBox ItemID;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Button ShowItems;
+        private System.Windows.Forms.ListBox ItemsList;
+        private System.Windows.Forms.ListBox CategoryList;
+        private System.Windows.Forms.Button ShowCategory;
+        private System.Windows.Forms.Button ShowCompany;
+        private System.Windows.Forms.ListBox CompanyList;
 
 
 

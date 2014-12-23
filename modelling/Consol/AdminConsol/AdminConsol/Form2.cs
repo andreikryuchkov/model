@@ -382,6 +382,72 @@ namespace AdminConsol
             cmd.ExecuteNonQuery();
             MessageBox.Show("Category changed", "Category Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
             conn.Close();
+        }
+
+        private void ShowItems_Click(object sender, EventArgs e)
+        {
+            SqlCommand cmd = new SqlCommand("SELECT [ID] ,[name] ,[price] ,[categoryID] ,[description] FROM [DATABASE1.MDF].[dbo].[Item]", conn);
+            Object[] allData = new Object[100];
+            CategoryList.Items.Clear();
+            conn.Open();
+            SqlDataReader dataReader = cmd.ExecuteReader();
+            if (dataReader.HasRows)
+            {
+                ItemsList.BeginUpdate();
+                while (dataReader.Read())
+                {
+                    dataReader.GetSqlValues(allData);
+                    ItemsList.Items.Add("ID " + allData[0].ToString() + " NAME " + allData[1].ToString() + " Price " + allData[2].ToString() + " categoryID " + allData[3].ToString());
+                }
+                ItemsList.EndUpdate();
+
+            }
+            MessageBox.Show("Items list refreshed", "The items list is refreshed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            conn.Close();
+        }
+
+        private void ShowCategory_Click(object sender, EventArgs e)
+        {
+            SqlCommand cmd = new SqlCommand("SELECT [ID] ,[name] FROM [DATABASE1.MDF].[dbo].[category]", conn);
+            Object[] allData = new Object[100];
+            CategoryList.Items.Clear();
+            conn.Open();
+            SqlDataReader dataReader = cmd.ExecuteReader();
+            if (dataReader.HasRows)
+            {
+                CategoryList.BeginUpdate();
+                while (dataReader.Read())
+                {
+                    dataReader.GetSqlValues(allData);
+                    CategoryList.Items.Add("ID " + allData[0].ToString() + " NAME " + allData[1].ToString());
+                }
+                CategoryList.EndUpdate();
+
+            }
+            MessageBox.Show("Category list refreshed", "The category list is refreshed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            conn.Close();
+        }
+
+        private void ShowCompany_Click(object sender, EventArgs e)
+        {
+            SqlCommand cmd = new SqlCommand("SELECT [ID] ,[name], [deposit], [property] FROM [DATABASE1.MDF].[dbo].[Company]", conn);
+            Object[] allData = new Object[100];
+            CompanyList.Items.Clear();
+            conn.Open();
+            SqlDataReader dataReader = cmd.ExecuteReader();
+            if (dataReader.HasRows)
+            {
+                CompanyList.BeginUpdate();
+                while (dataReader.Read())
+                {
+                    dataReader.GetSqlValues(allData);
+                    CompanyList.Items.Add("ID " + allData[0].ToString() + " NAME " + allData[1].ToString() + " deposit " + allData[2].ToString() + " property " + allData[3].ToString());
+                }
+                CompanyList.EndUpdate();
+
+            }
+            MessageBox.Show("Company list refreshed", "The Company list is refreshed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            conn.Close();
         }       
     }
 }
