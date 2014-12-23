@@ -135,7 +135,18 @@ namespace AdminConsol
                 MessageBox.Show("Order ID is null", "Enter order ID", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-
+            String checkComm = "select * from ord where id = " + OrderID.Text.ToString();
+            SqlCommand chkcmd = new SqlCommand(checkComm, conn);
+            conn.Open();
+            SqlDataReader reader = chkcmd.ExecuteReader();
+            reader.Read();
+            if (!reader.HasRows)
+            {
+                MessageBox.Show("Wrong order ID", "failed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                conn.Close();
+                return;
+            }
+            conn.Close();
             String command = "select name, price, [description] from [Item], [ItemOrdered] where [ItemOrdered].ItemID = [Item].ID and [ItemOrdered].OrdID = " + OrderID.Text.ToString();
             SqlCommand cmd = new SqlCommand(command, conn);
             Object[] allData = new Object[100];
@@ -164,6 +175,18 @@ namespace AdminConsol
                 MessageBox.Show("Enter order ID to confirm", "Order ID is null ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+            String checkComm = "select * from ord where id = " + ConfirmOrderId.Text.ToString();
+            SqlCommand chkcmd = new SqlCommand(checkComm, conn);
+            conn.Open();
+            SqlDataReader reader = chkcmd.ExecuteReader();
+            reader.Read();
+            if (!reader.HasRows)
+            {
+                MessageBox.Show("Wrong order ID", "failed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                conn.Close();
+                return;
+            }
+            conn.Close();
             String command = "UPDATE [dbo].[Ord] SET [StatusID] = 2 WHERE ID = " + ConfirmOrderId.Text.ToString();
             SqlCommand cmd = new SqlCommand(command, conn);          
             conn.Open();
@@ -179,6 +202,18 @@ namespace AdminConsol
                 MessageBox.Show("Enter order ID to confirm", "Order ID is null ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+            String checkComm = "select * from ord where id = " + RefuseOrderId.Text.ToString();
+            SqlCommand chkcmd = new SqlCommand(checkComm, conn);
+            conn.Open();
+            SqlDataReader reader = chkcmd.ExecuteReader();
+            reader.Read();
+            if (!reader.HasRows)
+            {
+                MessageBox.Show("Wrong order ID", "failed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                conn.Close();
+                return;
+            }
+            conn.Close();
             String command = "UPDATE [dbo].[Ord] SET [StatusID] = 5 WHERE ID = " + RefuseOrderId.Text.ToString();
             SqlCommand cmd = new SqlCommand(command, conn);
             conn.Open();
@@ -194,6 +229,18 @@ namespace AdminConsol
                 MessageBox.Show("Enter order ID to confirm", "Order ID is null ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+            String checkComm = "select * from ord where id = " + FinishOrderId.Text.ToString();
+            SqlCommand chkcmd = new SqlCommand(checkComm, conn);
+            conn.Open();
+            SqlDataReader reader = chkcmd.ExecuteReader();
+            reader.Read();
+            if (!reader.HasRows)
+            {
+                MessageBox.Show("Wrong order ID", "failed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                conn.Close();
+                return;
+            }
+            conn.Close();
             String command = "UPDATE [dbo].[Ord] SET [StatusID] = 4 WHERE ID = " + FinishOrderId.Text.ToString();
             SqlCommand cmd = new SqlCommand(command, conn);
             conn.Open();
