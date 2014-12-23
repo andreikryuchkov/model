@@ -37,10 +37,10 @@ namespace modelling
             //((ListBox)(Ordering.FindControl("adressList"))).Items.Clear();
             if ((items.Count == 0))
             {
-                ((Button)(Ordering.FindControl("orderDelivery"))).Enabled = false;
+               // ((Button)(Ordering.FindControl("orderDelivery"))).Enabled = false;
             }
 
-            ctwwSQL.TextCommand = "select ID, city, street, building from adress where usrID='"+Convert.ToString(Session["userID"])+"';";
+            ctwwSQL.TextCommand = "select ID, city, street, house from address where usrID='"+Convert.ToString(Session["userID"])+"';";
             //bool b=ctwwSQL.Reader.Read();
             int i=1;
             //ctwwSQL.Reader.
@@ -70,7 +70,7 @@ namespace modelling
             }
             else
             {
-                string command = "insert into adress(usrID,city,street,building) values('" +
+                string command = "insert into address(usrID,city,street,house) values('" +
                     Convert.ToInt32(Session["userID"]) + "','" +
                     ((TextBox)(Ordering.FindControl("cityInput"))).Text + "','" +
                     ((TextBox)(Ordering.FindControl("streetInput"))).Text + "','" +
@@ -84,6 +84,7 @@ namespace modelling
             List<Item> items = (List<Item>)s;
             int usrID = Convert.ToInt32(Session["userID"]);
             ctwwSQL.TextCommand = "INSERT INTO ord(statusID,adressID) values ('" + 1 + "','" + adressID + "'); Select IDENT_CURRENT('ord');";
+//            ctwwSQL.TextCommand = "INSERT INTO ord(statusID,adressID) values ( 1 ,'" + adressID + "'); Select IDENT_CURRENT('ord');";
             ctwwSQL.Reader.Read();
             string orderID = ctwwSQL.Reader[0].ToString();
             foreach (Item iter in items)
