@@ -281,6 +281,23 @@ namespace AdminConsol
                 MessageBox.Show("Enter value to add", "Deposit is null Is", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+            if (Company.Text.ToString() == "")
+            {
+                MessageBox.Show("Enter company ID", "Company ID is null Is", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            String checkComm = "select * from company where id = " + Company.Text.ToString();
+            SqlCommand chkcmd = new SqlCommand(checkComm, conn);
+            conn.Open();
+            SqlDataReader reader = chkcmd.ExecuteReader();
+            reader.Read();
+            if (!reader.HasRows)
+            {
+                MessageBox.Show("Wrong company ID", "failed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                conn.Close();
+                return;
+            }
+            conn.Close();
             String commandPart = DepositNew.Text.ToString();
             commandPart = commandPart.Replace(",", ".");
             commandPart = commandPart.Replace(" ", "0");
