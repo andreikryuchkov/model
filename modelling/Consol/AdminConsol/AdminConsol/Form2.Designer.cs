@@ -70,13 +70,7 @@
             this.deleteCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.ItemsPanel = new System.Windows.Forms.Panel();
-            this.ShowItems = new System.Windows.Forms.Button();
-            this.ItemsList = new System.Windows.Forms.ListBox();
-            this.ItemID = new System.Windows.Forms.TextBox();
-            this.lbl_Item = new System.Windows.Forms.Label();
-            this.ChengeItem = new System.Windows.Forms.Button();
-            this.DeleteItem = new System.Windows.Forms.Button();
-            this.AddItem = new System.Windows.Forms.Button();
+            this.AddPanel2 = new System.Windows.Forms.Panel();
             this.ItemPhotoLink = new System.Windows.Forms.TextBox();
             this.ItemCategory = new System.Windows.Forms.TextBox();
             this.ItemDescription = new System.Windows.Forms.TextBox();
@@ -87,35 +81,41 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.Change2 = new System.Windows.Forms.Button();
+            this.Delete2 = new System.Windows.Forms.Button();
+            this.Add1 = new System.Windows.Forms.Button();
+            this.ShowItems = new System.Windows.Forms.Button();
+            this.ItemsList = new System.Windows.Forms.ListBox();
+            this.ItemID = new System.Windows.Forms.TextBox();
+            this.lbl_Item = new System.Windows.Forms.Label();
+            this.ChengeItem = new System.Windows.Forms.Button();
+            this.DeleteItem = new System.Windows.Forms.Button();
+            this.AddItem = new System.Windows.Forms.Button();
             this.CategoryPanel = new System.Windows.Forms.Panel();
+            this.AddPanel = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.CategoryPhotoLink = new System.Windows.Forms.TextBox();
+            this.CategoryName = new System.Windows.Forms.TextBox();
+            this.CategoryDescription = new System.Windows.Forms.TextBox();
+            this.Change = new System.Windows.Forms.Button();
+            this.Delete = new System.Windows.Forms.Button();
+            this.Add = new System.Windows.Forms.Button();
             this.ShowCategory = new System.Windows.Forms.Button();
             this.CategoryList = new System.Windows.Forms.ListBox();
             this.ChangeCategory = new System.Windows.Forms.Button();
             this.DeleteCategory = new System.Windows.Forms.Button();
             this.AddCategory = new System.Windows.Forms.Button();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.lbl_CategoryID = new System.Windows.Forms.Label();
-            this.CategoryPhotoLink = new System.Windows.Forms.TextBox();
-            this.CategoryName = new System.Windows.Forms.TextBox();
-            this.CategoryDescription = new System.Windows.Forms.TextBox();
             this.CategoryID = new System.Windows.Forms.TextBox();
-            this.Add = new System.Windows.Forms.Button();
-            this.Delete = new System.Windows.Forms.Button();
-            this.Change = new System.Windows.Forms.Button();
-            this.Add1 = new System.Windows.Forms.Button();
-            this.Delete2 = new System.Windows.Forms.Button();
-            this.Change2 = new System.Windows.Forms.Button();
-            this.AddPanel = new System.Windows.Forms.Panel();
-            this.AddPanel2 = new System.Windows.Forms.Panel();
             this.toolStrip1.SuspendLayout();
             this.DepositPanel.SuspendLayout();
             this.OrderPanel.SuspendLayout();
             this.ItemsPanel.SuspendLayout();
+            this.AddPanel2.SuspendLayout();
             this.CategoryPanel.SuspendLayout();
             this.AddPanel.SuspendLayout();
-            this.AddPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -127,7 +127,7 @@
             this.DepositButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1370, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(931, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -528,74 +528,23 @@
             this.ItemsPanel.TabIndex = 11;
             this.ItemsPanel.Visible = false;
             // 
-            // ShowItems
+            // AddPanel2
             // 
-            this.ShowItems.Location = new System.Drawing.Point(665, 120);
-            this.ShowItems.Name = "ShowItems";
-            this.ShowItems.Size = new System.Drawing.Size(82, 22);
-            this.ShowItems.TabIndex = 6;
-            this.ShowItems.Text = "Show Menu";
-            this.ShowItems.UseVisualStyleBackColor = true;
-            this.ShowItems.Click += new System.EventHandler(this.ShowItems_Click);
-            // 
-            // ItemsList
-            // 
-            this.ItemsList.FormattingEnabled = true;
-            this.ItemsList.Location = new System.Drawing.Point(406, 7);
-            this.ItemsList.Name = "ItemsList";
-            this.ItemsList.Size = new System.Drawing.Size(341, 108);
-            this.ItemsList.TabIndex = 5;
-            // 
-            // ItemID
-            // 
-            this.ItemID.Location = new System.Drawing.Point(127, 46);
-            this.ItemID.Name = "ItemID";
-            this.ItemID.Size = new System.Drawing.Size(148, 20);
-            this.ItemID.TabIndex = 4;
-            this.ItemID.Visible = false;
-            // 
-            // lbl_Item
-            // 
-            this.lbl_Item.AutoSize = true;
-            this.lbl_Item.Location = new System.Drawing.Point(3, 53);
-            this.lbl_Item.Name = "lbl_Item";
-            this.lbl_Item.Size = new System.Drawing.Size(41, 13);
-            this.lbl_Item.TabIndex = 3;
-            this.lbl_Item.Text = "Item ID";
-            this.lbl_Item.Visible = false;
-            // 
-            // ChengeItem
-            // 
-            this.ChengeItem.Location = new System.Drawing.Point(307, 91);
-            this.ChengeItem.Name = "ChengeItem";
-            this.ChengeItem.Size = new System.Drawing.Size(91, 23);
-            this.ChengeItem.TabIndex = 2;
-            this.ChengeItem.Text = "Change Item";
-            this.ChengeItem.UseVisualStyleBackColor = true;
-            this.ChengeItem.Visible = false;
-            this.ChengeItem.Click += new System.EventHandler(this.ChengeItem_Click);
-            // 
-            // DeleteItem
-            // 
-            this.DeleteItem.Location = new System.Drawing.Point(307, 69);
-            this.DeleteItem.Name = "DeleteItem";
-            this.DeleteItem.Size = new System.Drawing.Size(91, 23);
-            this.DeleteItem.TabIndex = 2;
-            this.DeleteItem.Text = "Delete Item";
-            this.DeleteItem.UseVisualStyleBackColor = true;
-            this.DeleteItem.Visible = false;
-            this.DeleteItem.Click += new System.EventHandler(this.DeleteItem_Click);
-            // 
-            // AddItem
-            // 
-            this.AddItem.Location = new System.Drawing.Point(307, 46);
-            this.AddItem.Name = "AddItem";
-            this.AddItem.Size = new System.Drawing.Size(91, 23);
-            this.AddItem.TabIndex = 2;
-            this.AddItem.Text = "Add Item";
-            this.AddItem.UseVisualStyleBackColor = true;
-            this.AddItem.Visible = false;
-            this.AddItem.Click += new System.EventHandler(this.AddItem_Click);
+            this.AddPanel2.Controls.Add(this.ItemPhotoLink);
+            this.AddPanel2.Controls.Add(this.ItemCategory);
+            this.AddPanel2.Controls.Add(this.ItemDescription);
+            this.AddPanel2.Controls.Add(this.ItemPrice);
+            this.AddPanel2.Controls.Add(this.ItemName);
+            this.AddPanel2.Controls.Add(this.label11);
+            this.AddPanel2.Controls.Add(this.label10);
+            this.AddPanel2.Controls.Add(this.label9);
+            this.AddPanel2.Controls.Add(this.label8);
+            this.AddPanel2.Controls.Add(this.label7);
+            this.AddPanel2.Location = new System.Drawing.Point(1, 68);
+            this.AddPanel2.Name = "AddPanel2";
+            this.AddPanel2.Size = new System.Drawing.Size(280, 123);
+            this.AddPanel2.TabIndex = 10;
+            this.AddPanel2.Visible = false;
             // 
             // ItemPhotoLink
             // 
@@ -677,6 +626,105 @@
             this.label7.TabIndex = 0;
             this.label7.Text = "Item Name";
             // 
+            // Change2
+            // 
+            this.Change2.Location = new System.Drawing.Point(171, 7);
+            this.Change2.Name = "Change2";
+            this.Change2.Size = new System.Drawing.Size(75, 23);
+            this.Change2.TabIndex = 9;
+            this.Change2.Text = "Change";
+            this.Change2.UseVisualStyleBackColor = true;
+            this.Change2.Click += new System.EventHandler(this.Change2_Click);
+            // 
+            // Delete2
+            // 
+            this.Delete2.Location = new System.Drawing.Point(90, 7);
+            this.Delete2.Name = "Delete2";
+            this.Delete2.Size = new System.Drawing.Size(75, 23);
+            this.Delete2.TabIndex = 8;
+            this.Delete2.Text = "Delete";
+            this.Delete2.UseVisualStyleBackColor = true;
+            this.Delete2.Click += new System.EventHandler(this.Delete2_Click);
+            // 
+            // Add1
+            // 
+            this.Add1.Location = new System.Drawing.Point(9, 7);
+            this.Add1.Name = "Add1";
+            this.Add1.Size = new System.Drawing.Size(75, 23);
+            this.Add1.TabIndex = 7;
+            this.Add1.Text = "Add";
+            this.Add1.UseVisualStyleBackColor = true;
+            this.Add1.Click += new System.EventHandler(this.Add1_Click);
+            // 
+            // ShowItems
+            // 
+            this.ShowItems.Location = new System.Drawing.Point(665, 120);
+            this.ShowItems.Name = "ShowItems";
+            this.ShowItems.Size = new System.Drawing.Size(82, 22);
+            this.ShowItems.TabIndex = 6;
+            this.ShowItems.Text = "Show Menu";
+            this.ShowItems.UseVisualStyleBackColor = true;
+            this.ShowItems.Click += new System.EventHandler(this.ShowItems_Click);
+            // 
+            // ItemsList
+            // 
+            this.ItemsList.FormattingEnabled = true;
+            this.ItemsList.Location = new System.Drawing.Point(406, 7);
+            this.ItemsList.Name = "ItemsList";
+            this.ItemsList.Size = new System.Drawing.Size(341, 108);
+            this.ItemsList.TabIndex = 5;
+            // 
+            // ItemID
+            // 
+            this.ItemID.Location = new System.Drawing.Point(127, 46);
+            this.ItemID.Name = "ItemID";
+            this.ItemID.Size = new System.Drawing.Size(148, 20);
+            this.ItemID.TabIndex = 4;
+            this.ItemID.Visible = false;
+            // 
+            // lbl_Item
+            // 
+            this.lbl_Item.AutoSize = true;
+            this.lbl_Item.Location = new System.Drawing.Point(3, 53);
+            this.lbl_Item.Name = "lbl_Item";
+            this.lbl_Item.Size = new System.Drawing.Size(41, 13);
+            this.lbl_Item.TabIndex = 3;
+            this.lbl_Item.Text = "Item ID";
+            this.lbl_Item.Visible = false;
+            // 
+            // ChengeItem
+            // 
+            this.ChengeItem.Location = new System.Drawing.Point(307, 91);
+            this.ChengeItem.Name = "ChengeItem";
+            this.ChengeItem.Size = new System.Drawing.Size(91, 23);
+            this.ChengeItem.TabIndex = 2;
+            this.ChengeItem.Text = "Change Item";
+            this.ChengeItem.UseVisualStyleBackColor = true;
+            this.ChengeItem.Visible = false;
+            this.ChengeItem.Click += new System.EventHandler(this.ChengeItem_Click);
+            // 
+            // DeleteItem
+            // 
+            this.DeleteItem.Location = new System.Drawing.Point(307, 69);
+            this.DeleteItem.Name = "DeleteItem";
+            this.DeleteItem.Size = new System.Drawing.Size(91, 23);
+            this.DeleteItem.TabIndex = 2;
+            this.DeleteItem.Text = "Delete Item";
+            this.DeleteItem.UseVisualStyleBackColor = true;
+            this.DeleteItem.Visible = false;
+            this.DeleteItem.Click += new System.EventHandler(this.DeleteItem_Click);
+            // 
+            // AddItem
+            // 
+            this.AddItem.Location = new System.Drawing.Point(307, 46);
+            this.AddItem.Name = "AddItem";
+            this.AddItem.Size = new System.Drawing.Size(91, 23);
+            this.AddItem.TabIndex = 2;
+            this.AddItem.Text = "Add Item";
+            this.AddItem.UseVisualStyleBackColor = true;
+            this.AddItem.Visible = false;
+            this.AddItem.Click += new System.EventHandler(this.AddItem_Click);
+            // 
             // CategoryPanel
             // 
             this.CategoryPanel.Controls.Add(this.AddPanel);
@@ -695,6 +743,98 @@
             this.CategoryPanel.Size = new System.Drawing.Size(721, 290);
             this.CategoryPanel.TabIndex = 12;
             this.CategoryPanel.Visible = false;
+            // 
+            // AddPanel
+            // 
+            this.AddPanel.Controls.Add(this.label15);
+            this.AddPanel.Controls.Add(this.label14);
+            this.AddPanel.Controls.Add(this.label13);
+            this.AddPanel.Controls.Add(this.CategoryPhotoLink);
+            this.AddPanel.Controls.Add(this.CategoryName);
+            this.AddPanel.Controls.Add(this.CategoryDescription);
+            this.AddPanel.Location = new System.Drawing.Point(9, 64);
+            this.AddPanel.Name = "AddPanel";
+            this.AddPanel.Size = new System.Drawing.Size(272, 84);
+            this.AddPanel.TabIndex = 11;
+            this.AddPanel.Visible = false;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(2, 49);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(103, 13);
+            this.label15.TabIndex = 0;
+            this.label15.Text = "Category Photo Link";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(2, 26);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(105, 13);
+            this.label14.TabIndex = 0;
+            this.label14.Text = "Category Description";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(2, 4);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(80, 13);
+            this.label13.TabIndex = 0;
+            this.label13.Text = "Category Name";
+            // 
+            // CategoryPhotoLink
+            // 
+            this.CategoryPhotoLink.Location = new System.Drawing.Point(114, 46);
+            this.CategoryPhotoLink.Name = "CategoryPhotoLink";
+            this.CategoryPhotoLink.Size = new System.Drawing.Size(148, 20);
+            this.CategoryPhotoLink.TabIndex = 1;
+            // 
+            // CategoryName
+            // 
+            this.CategoryName.Location = new System.Drawing.Point(114, 1);
+            this.CategoryName.Name = "CategoryName";
+            this.CategoryName.Size = new System.Drawing.Size(148, 20);
+            this.CategoryName.TabIndex = 1;
+            // 
+            // CategoryDescription
+            // 
+            this.CategoryDescription.Location = new System.Drawing.Point(114, 23);
+            this.CategoryDescription.Name = "CategoryDescription";
+            this.CategoryDescription.Size = new System.Drawing.Size(148, 20);
+            this.CategoryDescription.TabIndex = 1;
+            // 
+            // Change
+            // 
+            this.Change.Location = new System.Drawing.Point(176, 3);
+            this.Change.Name = "Change";
+            this.Change.Size = new System.Drawing.Size(75, 23);
+            this.Change.TabIndex = 10;
+            this.Change.Text = "Change";
+            this.Change.UseVisualStyleBackColor = true;
+            this.Change.Click += new System.EventHandler(this.Change_Click);
+            // 
+            // Delete
+            // 
+            this.Delete.Location = new System.Drawing.Point(95, 3);
+            this.Delete.Name = "Delete";
+            this.Delete.Size = new System.Drawing.Size(75, 23);
+            this.Delete.TabIndex = 9;
+            this.Delete.Text = "Delete";
+            this.Delete.UseVisualStyleBackColor = true;
+            this.Delete.Click += new System.EventHandler(this.Delete_Click);
+            // 
+            // Add
+            // 
+            this.Add.Location = new System.Drawing.Point(14, 3);
+            this.Add.Name = "Add";
+            this.Add.Size = new System.Drawing.Size(75, 23);
+            this.Add.TabIndex = 8;
+            this.Add.Text = "Add";
+            this.Add.UseVisualStyleBackColor = true;
+            this.Add.Click += new System.EventHandler(this.Add_Click);
             // 
             // ShowCategory
             // 
@@ -747,33 +887,6 @@
             this.AddCategory.Visible = false;
             this.AddCategory.Click += new System.EventHandler(this.AddCategory_Click);
             // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(2, 49);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(103, 13);
-            this.label15.TabIndex = 0;
-            this.label15.Text = "Category Photo Link";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(2, 26);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(105, 13);
-            this.label14.TabIndex = 0;
-            this.label14.Text = "Category Description";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(2, 4);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(80, 13);
-            this.label13.TabIndex = 0;
-            this.label13.Text = "Category Name";
-            // 
             // lbl_CategoryID
             // 
             this.lbl_CategoryID.AutoSize = true;
@@ -784,27 +897,6 @@
             this.lbl_CategoryID.Text = "Category ID";
             this.lbl_CategoryID.Visible = false;
             // 
-            // CategoryPhotoLink
-            // 
-            this.CategoryPhotoLink.Location = new System.Drawing.Point(114, 46);
-            this.CategoryPhotoLink.Name = "CategoryPhotoLink";
-            this.CategoryPhotoLink.Size = new System.Drawing.Size(148, 20);
-            this.CategoryPhotoLink.TabIndex = 1;
-            // 
-            // CategoryName
-            // 
-            this.CategoryName.Location = new System.Drawing.Point(114, 1);
-            this.CategoryName.Name = "CategoryName";
-            this.CategoryName.Size = new System.Drawing.Size(148, 20);
-            this.CategoryName.TabIndex = 1;
-            // 
-            // CategoryDescription
-            // 
-            this.CategoryDescription.Location = new System.Drawing.Point(114, 23);
-            this.CategoryDescription.Name = "CategoryDescription";
-            this.CategoryDescription.Size = new System.Drawing.Size(148, 20);
-            this.CategoryDescription.TabIndex = 1;
-            // 
             // CategoryID
             // 
             this.CategoryID.Location = new System.Drawing.Point(123, 42);
@@ -813,103 +905,11 @@
             this.CategoryID.TabIndex = 1;
             this.CategoryID.Visible = false;
             // 
-            // Add
-            // 
-            this.Add.Location = new System.Drawing.Point(14, 3);
-            this.Add.Name = "Add";
-            this.Add.Size = new System.Drawing.Size(75, 23);
-            this.Add.TabIndex = 8;
-            this.Add.Text = "Add";
-            this.Add.UseVisualStyleBackColor = true;
-            this.Add.Click += new System.EventHandler(this.Add_Click);
-            // 
-            // Delete
-            // 
-            this.Delete.Location = new System.Drawing.Point(95, 3);
-            this.Delete.Name = "Delete";
-            this.Delete.Size = new System.Drawing.Size(75, 23);
-            this.Delete.TabIndex = 9;
-            this.Delete.Text = "Delete";
-            this.Delete.UseVisualStyleBackColor = true;
-            this.Delete.Click += new System.EventHandler(this.Delete_Click);
-            // 
-            // Change
-            // 
-            this.Change.Location = new System.Drawing.Point(176, 3);
-            this.Change.Name = "Change";
-            this.Change.Size = new System.Drawing.Size(75, 23);
-            this.Change.TabIndex = 10;
-            this.Change.Text = "Change";
-            this.Change.UseVisualStyleBackColor = true;
-            this.Change.Click += new System.EventHandler(this.Change_Click);
-            // 
-            // Add1
-            // 
-            this.Add1.Location = new System.Drawing.Point(9, 7);
-            this.Add1.Name = "Add1";
-            this.Add1.Size = new System.Drawing.Size(75, 23);
-            this.Add1.TabIndex = 7;
-            this.Add1.Text = "Add";
-            this.Add1.UseVisualStyleBackColor = true;
-            this.Add1.Click += new System.EventHandler(this.Add1_Click);
-            // 
-            // Delete2
-            // 
-            this.Delete2.Location = new System.Drawing.Point(90, 7);
-            this.Delete2.Name = "Delete2";
-            this.Delete2.Size = new System.Drawing.Size(75, 23);
-            this.Delete2.TabIndex = 8;
-            this.Delete2.Text = "Delete";
-            this.Delete2.UseVisualStyleBackColor = true;
-            this.Delete2.Click += new System.EventHandler(this.Delete2_Click);
-            // 
-            // Change2
-            // 
-            this.Change2.Location = new System.Drawing.Point(171, 7);
-            this.Change2.Name = "Change2";
-            this.Change2.Size = new System.Drawing.Size(75, 23);
-            this.Change2.TabIndex = 9;
-            this.Change2.Text = "Change";
-            this.Change2.UseVisualStyleBackColor = true;
-            this.Change2.Click += new System.EventHandler(this.Change2_Click);
-            // 
-            // AddPanel
-            // 
-            this.AddPanel.Controls.Add(this.label15);
-            this.AddPanel.Controls.Add(this.label14);
-            this.AddPanel.Controls.Add(this.label13);
-            this.AddPanel.Controls.Add(this.CategoryPhotoLink);
-            this.AddPanel.Controls.Add(this.CategoryName);
-            this.AddPanel.Controls.Add(this.CategoryDescription);
-            this.AddPanel.Location = new System.Drawing.Point(9, 64);
-            this.AddPanel.Name = "AddPanel";
-            this.AddPanel.Size = new System.Drawing.Size(272, 84);
-            this.AddPanel.TabIndex = 11;
-            this.AddPanel.Visible = false;
-            // 
-            // AddPanel2
-            // 
-            this.AddPanel2.Controls.Add(this.ItemPhotoLink);
-            this.AddPanel2.Controls.Add(this.ItemCategory);
-            this.AddPanel2.Controls.Add(this.ItemDescription);
-            this.AddPanel2.Controls.Add(this.ItemPrice);
-            this.AddPanel2.Controls.Add(this.ItemName);
-            this.AddPanel2.Controls.Add(this.label11);
-            this.AddPanel2.Controls.Add(this.label10);
-            this.AddPanel2.Controls.Add(this.label9);
-            this.AddPanel2.Controls.Add(this.label8);
-            this.AddPanel2.Controls.Add(this.label7);
-            this.AddPanel2.Location = new System.Drawing.Point(1, 68);
-            this.AddPanel2.Name = "AddPanel2";
-            this.AddPanel2.Size = new System.Drawing.Size(280, 123);
-            this.AddPanel2.TabIndex = 10;
-            this.AddPanel2.Visible = false;
-            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1370, 539);
+            this.ClientSize = new System.Drawing.Size(931, 539);
             this.Controls.Add(this.DepositPanel);
             this.Controls.Add(this.CategoryPanel);
             this.Controls.Add(this.ItemsPanel);
@@ -927,12 +927,12 @@
             this.OrderPanel.PerformLayout();
             this.ItemsPanel.ResumeLayout(false);
             this.ItemsPanel.PerformLayout();
+            this.AddPanel2.ResumeLayout(false);
+            this.AddPanel2.PerformLayout();
             this.CategoryPanel.ResumeLayout(false);
             this.CategoryPanel.PerformLayout();
             this.AddPanel.ResumeLayout(false);
             this.AddPanel.PerformLayout();
-            this.AddPanel2.ResumeLayout(false);
-            this.AddPanel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

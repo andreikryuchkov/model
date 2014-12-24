@@ -82,7 +82,7 @@ namespace AdminConsol
 
         private void RefreshOrdersList_Click(object sender, EventArgs e)
         {
-            SqlCommand cmd = new SqlCommand("select  o.ID, city, street, house, u.id ,u.name, family, mail,CompanyID  from [dbo].[Ord] o, [dbo].[Address] A, usr u where StatusID = 1 and  A.[ID] = o.AddressID and u.ID = A.usrID", conn);
+            SqlCommand cmd = new SqlCommand("select  o.ID, city, street, building, u.id ,u.name, family, mail,CompanyID  from [dbo].[Ord] o, [dbo].[Adress] A, usr u where StatusID = 1 and  A.[ID] = o.AdressID and u.ID = A.usrID", conn);
             Object[] allData  = new Object[100];
             NewOrdersList.Items.Clear();
             conn.Open();
