@@ -44,7 +44,7 @@ namespace modelling
             }
             catch (Exception e)
             {
-                throw new Exception("Mail.Send: " + e.Message);
+                //throw new Exception("Mail Exc:" + e.Message);
             }
         }
         public string GetMD5Hash(string input)

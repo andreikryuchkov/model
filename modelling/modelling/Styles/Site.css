@@ -220,7 +220,7 @@ div.accountInfo {
     float: left;
     line-height: 3.3em;
     margin: 0 0 0 115px;
-    width: 15%;
+    width: 23%;
 }
 #leftMenu {
     display: table-cell;
@@ -308,4 +308,14 @@ div.accountInfo {
     cursor: pointer;
     height: 72px;
     width: 210px;
+}
+
+
+#HeadLoginView_forgotPassword
+{
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 0 none;
+    color:#eee;
+    cursor: pointer;
+    position: absolute;
 }

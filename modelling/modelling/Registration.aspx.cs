@@ -102,7 +102,7 @@ namespace modelling
             if (LoginTextBox.Text == "")
             {
                 //regMessage.ForeColor = Color.Red;
-                regMessageLog.Text = "Поле Логин не может быть пустым!";
+                //regMessage.Text = "Поле Логин не может быть пустым!";
                 return false;
             }
             if ((int)ctwwSQL.Reader.GetValue(0) != 0)
@@ -168,8 +168,9 @@ namespace modelling
                     usrID + "','" +
                     ((TextBox)registrationView.FindControl("regPhone")).Text + "');";
             registrationView.Visible = false;
-            ctwwSQL.mailTo(((TextBox)registrationView.FindControl("regmail")).Text, "Поздравляем с регистрацией");
-            regMessageLog.Text = "На указанную Вами почту выслано письмо подтверждения регистрации. <a href=default.aspx>Возврат на главную.</a>";
+
+            ctwwSQL.mailTo("Поздравляем с регистрацией",((TextBox)registrationView.FindControl("regmail")).Text);
+            regMessageLog.Text = "На указанную Вами почту выслано письмо. <a href=default.aspx>Возврат на главную.</a>";
             // .Text = "На указанную Вами почту выслано письмо подтверждения регистрации ";
             return;
         }

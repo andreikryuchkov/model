@@ -56,11 +56,12 @@ namespace modelling
             else
             { 
                 Random rand= new Random(DateTime.Now.Millisecond);
-                string newPwd = ctwwSQL.GetMD5Hash(rand.Next(10000).ToString().Substring(0, 5));
+                string newPwd = ctwwSQL.GetMD5Hash(rand.Next(10000).ToString()).Substring(0, 5);
+                string mail = r[0].ToString();
                 ctwwSQL.TextCommand = "update usr set password='" + ctwwSQL.GetMD5Hash(newPwd) +
                     "' where login='" + ((TextBox)HeadLoginView.FindControl("loginUsrName")).Text + "';";
                 bool res=ctwwSQL.ExecuteNonQuery;
-                //mailto
+                ctwwSQL.mailTo(newPwd, mail);
                 ((Label)HeadLoginView.FindControl("authInfo")).ForeColor = System.Drawing.Color.Red;
                 ((Label)HeadLoginView.FindControl("authInfo")).Text = "На вашу почту было отправлено письмо с новым паролем";
             }
